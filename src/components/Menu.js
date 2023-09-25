@@ -1,10 +1,12 @@
 import React from 'react';
-import { MenuPicker } from './menu-components/MenuPicker';
+import { BottomTab } from './menu-components/BottomTab';
+import { FeatureItem } from './menu-components/FeatureItem';
+import { ShieldItem } from './menu-components/ShieldItem';
 
-export const Menu = () => {
+export const Menu = ({ theme }) => {
 	return (
 		<div className="mx-auto flex flex-row h-[48rem] flex-nowrap">
-			<div id="l-wing" className="bg-red-50 p-3 my-12 rounded-l-md text-center transform -scale-x-100">
+			<div id="l-wing" className="p-3 my-12 rounded-r-md text-center transform -scale-x-100" style={{ backgroundColor: theme.buttons, color: theme.icons }}>
 				<svg className="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 					<path
 						fill="currentColor"
@@ -15,178 +17,69 @@ export const Menu = () => {
 
 			<div id="center" className="w-full rounded-lg relative">
 				{/* Navbar */}
-				<div className="h-[10%] bg-green-100 rounded-t-lg flex items-center">
+				<div className="h-[10%] bg-green-100 rounded-t-lg flex items-center" style={{ backgroundColor: theme.background300, color: theme.text }}>
 					<span className="text-4xl mx-12 font-bold tracking-wide">Safety</span>
 				</div>
 
 				{/* Menu Container */}
-				<div className="h-[90%] pt-16 pb-12 px-12 bg-blue-100 rounded-b-lg">
+				<div className="h-[90%] pt-16 pb-12 px-12 bg-blue-100 rounded-b-lg" style={{ backgroundColor: theme.background400 }}>
 					<div className="flex h-full flex-col">
 						{/* Shield Levels */}
 						<ul className="flex flex-row justify-between gap-x-4">
-							<li id="shieldItem" className="bg-green-100 w-1/4 py-4 rounded-t-md text-center flex flex-col items-center">
-								<svg className="w-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-									<path
-										fill="currentColor"
-										d="M12 22q-3.475-.875-5.738-3.988T4 11.1V5l8-3l8 3v6.1q0 3.8-2.263 6.913T12 22Zm0-2.1q2.6-.825 4.3-3.3t1.7-5.5V6.375l-6-2.25l-6 2.25V11.1q0 3.025 1.7 5.5t4.3 3.3Zm0-7.9Z"
-									/>
-								</svg>
-								<p className="text-2xl font-semibold tracking-wide mt-2">Maximum</p>
-							</li>
-							<li id="shieldItem" className="bg-green-100 w-1/4 py-4 rounded-t-md text-center flex flex-col items-center">
-								<svg className="w-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-									<path
-										fill="currentColor"
-										d="M12 22q-3.475-.875-5.738-3.988T4 11.1V5l8-3l8 3v6.1q0 3.8-2.263 6.913T12 22Zm0-2.1q2.6-.825 4.3-3.3t1.7-5.5V6.375l-6-2.25l-6 2.25V11.1q0 3.025 1.7 5.5t4.3 3.3Zm0-7.9Z"
-									/>
-								</svg>
-								<p className="text-2xl font-semibold tracking-wide mt-2">Normal</p>
-							</li>
-							<li id="shieldItem" className="bg-green-100 w-1/4 py-4 rounded-t-md text-center flex flex-col items-center">
-								<svg className="w-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-									<path
-										fill="currentColor"
-										d="M12 22q-3.475-.875-5.738-3.988T4 11.1V5l8-3l8 3v6.1q0 3.8-2.263 6.913T12 22Zm0-2.1q2.6-.825 4.3-3.3t1.7-5.5V6.375l-6-2.25l-6 2.25V11.1q0 3.025 1.7 5.5t4.3 3.3Zm0-7.9Z"
-									/>
-								</svg>
-								<p className="text-2xl font-semibold tracking-wide mt-2">None</p>
-							</li>
-							<li id="shieldItem" className="bg-green-100 w-1/4 py-4 rounded-t-md text-center flex flex-col items-center ">
-								<svg className="w-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-									<path
-										fill="currentColor"
-										d="M12 22q-3.475-.875-5.738-3.988T4 11.1V5l8-3l8 3v6.1q0 3.8-2.263 6.913T12 22Zm0-2.1q2.6-.825 4.3-3.3t1.7-5.5V6.375l-6-2.25l-6 2.25V11.1q0 3.025 1.7 5.5t4.3 3.3Zm0-7.9Z"
-									/>
-								</svg>
-								<p className="text-2xl font-semibold tracking-wide mt-2">Custom</p>
-							</li>
+							<ShieldItem theme={theme} text={'Maximum'} />
+							<ShieldItem theme={theme} text={'Normal'} />
+							<ShieldItem theme={theme} text={'None'} />
+							<ShieldItem theme={theme} text={'Custom'} selected={true} />
 						</ul>
 
 						{/* Info Text */}
-						<div className="text-center bg-blue-400 py-2 tracking-wide text-lg font-bold">
+						<div className="text-center py-2 tracking-wide text-lg font-bold" style={{ color: theme.subtext, backgroundColor: theme.highlight }}>
 							<p>Use the tabs below to see which features are enabled for users of each Trust Rank.</p>
 							<p>In Custom mode you can turn features on or off for each Trust Rank.</p>
 						</div>
 
 						{/* Rank Selector */}
-						<ul className="flex flex-row justify-between font-semibold tracking-wider bg-green-300">
-							<li className="w-full text-center py-5 border-b-4 border-blue-700">Visitor</li>
-							<li className="w-full text-center py-5">New User</li>
-							<li className="w-full text-center py-5">User</li>
-							<li className="w-full text-center py-5">Known User</li>
-							<li className="w-full text-center py-5">Trusted User</li>
-							<li className="w-full text-center py-5">Friends</li>
+						<ul className="flex flex-row justify-between font-semibold tracking-wider bg-green-300" style={{ backgroundColor: theme.background200 }}>
+							<li className="w-full text-[#ccc] text-center py-5 border-b-4 border-blue-700">Visitor</li>
+							<li className="w-full text-[#187cfa] text-center py-5">New User</li>
+							<li className="w-full text-[#25cd67] text-center py-5">User</li>
+							<li className="w-full text-[#ff7b47] text-center py-5">Known User</li>
+							<li className="w-full text-[#824ae1] text-center py-5">Trusted User</li>
+							<li className="w-full text-[#fffd43] text-center py-5">Friends</li>
 						</ul>
 
 						{/* Features */}
-						<ul className="flex flex-row flex-wrap justify-center items-start h-full gap-x-6 font-semibold bg-blue-200">
-							<li>
-								<p className="w-32 h-12 mt-4 bg-red-200 flex justify-center items-center">okay</p>
-								<div className=" mt-2 w-32 p-2 py-1 aspect-square bg-red-400 text-center flex flex-col items-center rounded-xl ring ring-red-400/50">
-									<svg className="w-3/4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-										<path
-											fill="currentColor"
-											d="M14.36 14.23a3.76 3.76 0 0 1-4.72 0a1 1 0 0 0-1.28 1.54a5.68 5.68 0 0 0 7.28 0a1 1 0 1 0-1.28-1.54ZM9 11a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm6-2a1 1 0 1 0 1 1a1 1 0 0 0-1-1Zm-3-7a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8Z"
-										/>
-									</svg>
-									<p className="h-1/4 font-semibold mt-1 leading-tight">Voice</p>
-								</div>
-							</li>
-							<li>
-								<p className="w-32 h-12 mt-4 bg-red-200 flex justify-center items-center">okay</p>
-								<div className=" mt-2 w-32 p-2 py-1 aspect-square bg-red-400 text-center flex flex-col items-center rounded-xl ring ring-red-400/50">
-									<svg className="w-3/4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-										<path
-											fill="currentColor"
-											d="M14.36 14.23a3.76 3.76 0 0 1-4.72 0a1 1 0 0 0-1.28 1.54a5.68 5.68 0 0 0 7.28 0a1 1 0 1 0-1.28-1.54ZM9 11a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm6-2a1 1 0 1 0 1 1a1 1 0 0 0-1-1Zm-3-7a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8Z"
-										/>
-									</svg>
-									<p className="h-1/4 font-semibold mt-1 leading-tight">Avatar</p>
-								</div>
-							</li>
-							<li>
-								<p className="w-32 h-12 mt-4 bg-red-200 flex justify-center items-center">okay</p>
-								<div className=" mt-2 w-32 p-2 py-1 aspect-square bg-red-400 text-center flex flex-col items-center rounded-xl ring ring-red-400/50">
-									<svg className="w-3/4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-										<path
-											fill="currentColor"
-											d="M14.36 14.23a3.76 3.76 0 0 1-4.72 0a1 1 0 0 0-1.28 1.54a5.68 5.68 0 0 0 7.28 0a1 1 0 1 0-1.28-1.54ZM9 11a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm6-2a1 1 0 1 0 1 1a1 1 0 0 0-1-1Zm-3-7a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8Z"
-										/>
-									</svg>
-									<p className="h-1/4 font-semibold -mt-1 leading-tight">User Icons & Emojis</p>
-								</div>
-							</li>
-							<li>
-								<p className="w-32 h-12 mt-4 bg-red-200 flex justify-center items-center">okay</p>
-								<div className=" mt-2 w-32 p-2 py-1 aspect-square bg-red-400 text-center flex flex-col items-center rounded-xl ring ring-red-400/50">
-									<svg className="w-3/4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-										<path
-											fill="currentColor"
-											d="M14.36 14.23a3.76 3.76 0 0 1-4.72 0a1 1 0 0 0-1.28 1.54a5.68 5.68 0 0 0 7.28 0a1 1 0 1 0-1.28-1.54ZM9 11a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm6-2a1 1 0 1 0 1 1a1 1 0 0 0-1-1Zm-3-7a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8Z"
-										/>
-									</svg>
-									<p className="h-1/4 font-semibold mt-1 leading-tight">Audio</p>
-								</div>
-							</li>
-							<li>
-								<p className="w-32 h-12 mt-4 bg-red-200 flex justify-center items-center">okay</p>
-								<div className=" mt-2 w-32 p-2 py-1 aspect-square bg-red-400 text-center flex flex-col items-center rounded-xl ring ring-red-400/50">
-									<svg className="w-3/4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-										<path
-											fill="currentColor"
-											d="M14.36 14.23a3.76 3.76 0 0 1-4.72 0a1 1 0 0 0-1.28 1.54a5.68 5.68 0 0 0 7.28 0a1 1 0 1 0-1.28-1.54ZM9 11a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm6-2a1 1 0 1 0 1 1a1 1 0 0 0-1-1Zm-3-7a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8Z"
-										/>
-									</svg>
-									<p className="h-1/4 font-semibold -mt-1 leading-tight">Lights & Particles</p>
-								</div>
-							</li>
-							<li>
-								<p className="w-32 h-12 mt-4 bg-red-200 flex justify-center items-center">okay</p>
-								<div className=" mt-2 w-32 p-2 py-1 aspect-square bg-red-400 text-center flex flex-col items-center rounded-xl ring ring-red-400/50">
-									<svg className="w-3/4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-										<path
-											fill="currentColor"
-											d="M14.36 14.23a3.76 3.76 0 0 1-4.72 0a1 1 0 0 0-1.28 1.54a5.68 5.68 0 0 0 7.28 0a1 1 0 1 0-1.28-1.54ZM9 11a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm6-2a1 1 0 1 0 1 1a1 1 0 0 0-1-1Zm-3-7a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8Z"
-										/>
-									</svg>
-									<p className="h-1/4 font-semibold mt-1 leading-tight">Shaders</p>
-								</div>
-							</li>
-							<li>
-								<p className="w-32 h-12 mt-4 bg-red-200 flex justify-center items-center">okay</p>
-								<div className=" mt-2 w-32 p-2 py-1 aspect-square bg-red-400 text-center flex flex-col items-center rounded-xl ring ring-red-400/50">
-									<svg className="w-3/4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-										<path
-											fill="currentColor"
-											d="M14.36 14.23a3.76 3.76 0 0 1-4.72 0a1 1 0 0 0-1.28 1.54a5.68 5.68 0 0 0 7.28 0a1 1 0 1 0-1.28-1.54ZM9 11a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm6-2a1 1 0 1 0 1 1a1 1 0 0 0-1-1Zm-3-7a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8Z"
-										/>
-									</svg>
-									<p className="h-1/4 font-semibold -mt-1 leading-tight">Custom Animations</p>
-								</div>
-							</li>
+						<ul className="flex flex-row flex-wrap justify-center items-start h-full gap-x-6 font-semibold" style={{ backgroundColor: theme.background500 }}>
+							<FeatureItem theme={theme} text="Voice" icon="idk yet" />
+							<FeatureItem theme={theme} text="Avatar" icon="idk yet" />
+							<FeatureItem theme={theme} text="User Icons & Emojis" icon="idk yet" />
+							<FeatureItem theme={theme} text="Audio" icon="idk yet" />
+							<FeatureItem theme={theme} text="Lights & Particles" icon="idk yet" />
+							<FeatureItem theme={theme} text="Shaders" icon="idk yet" />
+							<FeatureItem theme={theme} text="Custom Animations" icon="idk yet" />
 						</ul>
 					</div>
 				</div>
 
 				<div id="bottom" className="absolute w-full">
 					<ul className="flex justify-center">
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
-						<MenuPicker color={'#f97271'} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
+						<BottomTab theme={theme} />
 					</ul>
 				</div>
 			</div>
 
-			<div id="l-wing" className="bg-red-50 p-3 my-12 rounded-r-md text-center">
+			<div id="r-wing" className=" p-3 my-12 rounded-r-md text-center" style={{ backgroundColor: theme.buttons, color: theme.icons }}>
 				<svg className="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
 					<path
 						fill="currentColor"
