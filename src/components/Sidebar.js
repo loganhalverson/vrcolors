@@ -20,11 +20,11 @@ export const Sidebar = ({ theme, setTheme, generateShades }) => {
 
 			{/* Color Picker */}
 			<div className="flex flex-col gap-y-2 flex-1 items-start justify-center">
-				<ColorPicker option={'Highlight'} theme={theme} setTheme={setTheme} generateShades={generateShades} />{' '}
-				<ColorPicker option={'Icons'} theme={theme} setTheme={setTheme} generateShades={generateShades} />{' '}
-				<ColorPicker option={'Buttons'} theme={theme} setTheme={setTheme} generateShades={generateShades} />{' '}
-				<ColorPicker option={'Background'} theme={theme} setTheme={setTheme} generateShades={generateShades} />{' '}
-				<ColorPicker option={'Text'} theme={theme} setTheme={setTheme} generateShades={generateShades} />{' '}
+				<ColorPicker option={'Highlight'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
+				<ColorPicker option={'Icons'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
+				<ColorPicker option={'Buttons'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
+				<ColorPicker option={'Background'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
+				<ColorPicker option={'Text'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
 				<ColorPicker option={'Subtext'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
 			</div>
 

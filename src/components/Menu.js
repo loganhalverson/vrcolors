@@ -71,7 +71,7 @@ export const Menu = ({ theme }) => {
 							<BottomTab theme={theme} />
 							<BottomTab theme={theme} />
 							<BottomTab theme={theme} />
-							<BottomTab theme={theme} />
+							<BottomTab theme={theme} selected={true} />
 							<BottomTab theme={theme} />
 							<BottomTab theme={theme} />
 							<BottomTab theme={theme} />
