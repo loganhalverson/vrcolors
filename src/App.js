@@ -1,8 +1,22 @@
 import { useEffect, useState } from 'react';
-import { ColorPicker } from './components/ColorPicker';
 import { Menu } from './components/Menu';
+import { Sidebar } from './components/Sidebar';
 
 function App() {
+	// Main Theme State. I'm not sure where this should go yet, so for the moment it resides here.
+	const [theme, setTheme] = useState({
+		highlight: '#6be4f9',
+		icons: '#2aabc1',
+		buttons: '#0d3537',
+		background: '#1b222c',
+		text: '#bbbbbb',
+		subtext: '#008489',
+	});
+
+	useEffect(() => {
+		generateShades();
+	}, []);
+
 	const shadeColor = (color, percent) => {
 		var R = parseInt(color.substring(1, 3), 16);
 		var G = parseInt(color.substring(3, 5), 16);
@@ -27,30 +41,25 @@ function App() {
 		return '#' + RR + GG + BB;
 	};
 
-	// Main Theme State. I'm not sure where this should go yet, so for the moment it resides here.
-	const [theme, setTheme] = useState({
-		highlight: '#6be4f9',
-		icons: '#2aabc1',
-		buttons: '#0d3537',
-		background: '#1b222c',
-		text: '#bbbbbb',
-		subtext: '#008489',
-	});
-
-	useEffect(() => {
-		setTheme({
-			...theme,
-			background500: `${shadeColor(theme.background, -60)}`,
-			background400: `${shadeColor(theme.background, -50)}`,
-			background300: `${shadeColor(theme.background, -30)}`,
-			background200: `${shadeColor(theme.background, -25)}`,
-			background100: `${shadeColor(theme.background, -10)}`,
+	const generateShades = () => {
+		setTheme((prevTheme) => {
+			return {
+				...prevTheme,
+				background500: `${shadeColor(prevTheme.background, -60)}`,
+				background400: `${shadeColor(prevTheme.background, -50)}`,
+				background300: `${shadeColor(prevTheme.background, -30)}`,
+				background200: `${shadeColor(prevTheme.background, -25)}`,
+				background100: `${shadeColor(prevTheme.background, -10)}`,
+			};
 		});
-	}, []);
+	};
 
 	return (
-		<div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-300 py-6 font-sans">
-			<div className="container mx-auto">
+		<div className="flex min-h-screen flex-row items-center overflow-hidden bg-gray-300 font-sans">
+			{/* Prop drilling?.. */}
+			<Sidebar theme={theme} setTheme={setTheme} generateShades={generateShades} />
+
+			<div className="container mx-auto ">
 				<Menu theme={theme} />
 			</div>
 		</div>
