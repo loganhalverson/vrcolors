@@ -4,8 +4,6 @@ import { FeatureItem } from './menu-components/FeatureItem';
 import { ShieldItem } from './menu-components/ShieldItem';
 
 export const Menu = ({ theme }) => {
-	console.log(theme);
-
 	return (
 		<div className="w-full h-full">
 			<div className="flex flex-row h-[48rem] flex-nowrap">
@@ -20,12 +18,12 @@ export const Menu = ({ theme }) => {
 
 				<div id="center" className="w-full rounded-lg relative">
 					{/* Navbar */}
-					<div className="h-[10%]  rounded-t-lg flex items-center" style={{ backgroundColor: theme.background200, color: theme.text }}>
+					<div className="h-[10%]  rounded-t-lg flex items-center" style={{ backgroundColor: theme.background300, color: theme.text }}>
 						<span className="text-4xl mx-12 font-bold tracking-wide">Safety</span>
 					</div>
 
 					{/* Menu Container */}
-					<div className="h-[90%] pt-16 pb-12 px-12 rounded-b-lg" style={{ backgroundColor: theme.background300 }}>
+					<div className="h-[90%] pt-16 pb-12 px-12 rounded-b-lg" style={{ backgroundColor: theme.background500 }}>
 						<div className="flex h-full flex-col">
 							{/* Shield Levels */}
 							<ul className="flex flex-row justify-between gap-x-4">
@@ -42,7 +40,7 @@ export const Menu = ({ theme }) => {
 							</div>
 
 							{/* Rank Selector */}
-							<ul className="flex flex-row justify-between font-semibold tracking-wider" style={{ backgroundColor: theme.background500 }}>
+							<ul className="flex flex-row justify-between font-semibold tracking-wider" style={{ backgroundColor: theme.background400 }}>
 								<li className="w-full text-[#ccc] text-center py-5 border-b-4 border-blue-700">Visitor</li>
 								<li className="w-full text-[#187cfa] text-center py-5">New User</li>
 								<li className="w-full text-[#25cd67] text-center py-5">User</li>
@@ -54,7 +52,7 @@ export const Menu = ({ theme }) => {
 							{/* Features */}
 							<ul
 								className="flex flex-row flex-wrap justify-center items-start h-full gap-x-6 font-semibold rounded-b-lg"
-								style={{ backgroundColor: theme.background900 }}>
+								style={{ backgroundColor: theme.background700 }}>
 								<FeatureItem theme={theme} text="Voice" />
 								<FeatureItem theme={theme} text="Avatar" />
 								<FeatureItem theme={theme} text="User Icons & Emojis" />

@@ -71,14 +71,14 @@ export const generateShades = (key, setTheme) => {
 		return {
 			...prevTheme,
 			[`${key}900`]: `${shadeHexColor(prevTheme[`${key}`], -0.85)}`,
-			[`${key}800`]: `${shadeHexColor(prevTheme[`${key}`], -0.6)}`,
-			[`${key}700`]: `${shadeHexColor(prevTheme[`${key}`], -0.4)}`,
-			[`${key}600`]: `${shadeHexColor(prevTheme[`${key}`], -0.3)}`,
+			[`${key}800`]: `${shadeHexColor(prevTheme[`${key}`], -0.65)}`,
+			[`${key}700`]: `${shadeHexColor(prevTheme[`${key}`], -0.45)}`,
+			[`${key}600`]: `${shadeHexColor(prevTheme[`${key}`], -0.25)}`,
 			[`${key}500`]: `${shadeHexColor(prevTheme[`${key}`], 0)}`,
-			[`${key}400`]: `${shadeHexColor(prevTheme[`${key}`], 0.1)}`,
-			[`${key}300`]: `${shadeHexColor(prevTheme[`${key}`], 0.2)}`,
-			[`${key}200`]: `${shadeHexColor(prevTheme[`${key}`], 0.3)}`,
-			[`${key}100`]: `${shadeHexColor(prevTheme[`${key}`], 0.4)}`,
+			[`${key}400`]: `${shadeHexColor(prevTheme[`${key}`], 0.05)}`,
+			[`${key}300`]: `${shadeHexColor(prevTheme[`${key}`], 0.1)}`,
+			[`${key}200`]: `${shadeHexColor(prevTheme[`${key}`], 0.15)}`,
+			[`${key}100`]: `${shadeHexColor(prevTheme[`${key}`], 0.2)}`,
 		};
 	});
 };
