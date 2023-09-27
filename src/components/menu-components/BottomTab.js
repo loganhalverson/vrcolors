@@ -15,7 +15,7 @@ export const BottomTab = ({ theme, selected = false }) => {
 		);
 	} else {
 		return (
-			<li className="h-16 w-20 p-2 aspect-square rounded-b-xl flex justify-center" style={{ backgroundColor: theme.background }}>
+			<li className="h-16 w-20 p-2 aspect-square rounded-b-xl flex justify-center" style={{ backgroundColor: theme.background500 }}>
 				<svg className="h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style={{ color: theme.buttons }}>
 					<path
 						fill="currentColor"

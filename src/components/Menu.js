@@ -4,6 +4,8 @@ import { FeatureItem } from './menu-components/FeatureItem';
 import { ShieldItem } from './menu-components/ShieldItem';
 
 export const Menu = ({ theme }) => {
+	console.log(theme);
+
 	return (
 		<div className="w-full h-full">
 			<div className="flex flex-row h-[48rem] flex-nowrap">
@@ -18,19 +20,19 @@ export const Menu = ({ theme }) => {
 
 				<div id="center" className="w-full rounded-lg relative">
 					{/* Navbar */}
-					<div className="h-[10%] bg-green-100 rounded-t-lg flex items-center" style={{ backgroundColor: theme.background300, color: theme.text }}>
+					<div className="h-[10%]  rounded-t-lg flex items-center" style={{ backgroundColor: theme.background200, color: theme.text }}>
 						<span className="text-4xl mx-12 font-bold tracking-wide">Safety</span>
 					</div>
 
 					{/* Menu Container */}
-					<div className="h-[90%] pt-16 pb-12 px-12 bg-blue-100 rounded-b-lg" style={{ backgroundColor: theme.background400 }}>
+					<div className="h-[90%] pt-16 pb-12 px-12 rounded-b-lg" style={{ backgroundColor: theme.background300 }}>
 						<div className="flex h-full flex-col">
 							{/* Shield Levels */}
 							<ul className="flex flex-row justify-between gap-x-4">
 								<ShieldItem theme={theme} text={'Maximum'} />
 								<ShieldItem theme={theme} text={'Normal'} />
 								<ShieldItem theme={theme} text={'None'} />
-								<ShieldItem theme={theme} text={'Custom'} selected={true} />
+								<ShieldItem theme={theme} text={'Custom'} selected />
 							</ul>
 
 							{/* Info Text */}
@@ -40,7 +42,7 @@ export const Menu = ({ theme }) => {
 							</div>
 
 							{/* Rank Selector */}
-							<ul className="flex flex-row justify-between font-semibold tracking-wider bg-green-300" style={{ backgroundColor: theme.background200 }}>
+							<ul className="flex flex-row justify-between font-semibold tracking-wider" style={{ backgroundColor: theme.background500 }}>
 								<li className="w-full text-[#ccc] text-center py-5 border-b-4 border-blue-700">Visitor</li>
 								<li className="w-full text-[#187cfa] text-center py-5">New User</li>
 								<li className="w-full text-[#25cd67] text-center py-5">User</li>
@@ -50,14 +52,16 @@ export const Menu = ({ theme }) => {
 							</ul>
 
 							{/* Features */}
-							<ul className="flex flex-row flex-wrap justify-center items-start h-full gap-x-6 font-semibold" style={{ backgroundColor: theme.background500 }}>
-								<FeatureItem theme={theme} text="Voice" icon="idk yet" />
-								<FeatureItem theme={theme} text="Avatar" icon="idk yet" />
-								<FeatureItem theme={theme} text="User Icons & Emojis" icon="idk yet" />
-								<FeatureItem theme={theme} text="Audio" icon="idk yet" />
-								<FeatureItem theme={theme} text="Lights & Particles" icon="idk yet" />
-								<FeatureItem theme={theme} text="Shaders" icon="idk yet" />
-								<FeatureItem theme={theme} text="Custom Animations" icon="idk yet" />
+							<ul
+								className="flex flex-row flex-wrap justify-center items-start h-full gap-x-6 font-semibold rounded-b-lg"
+								style={{ backgroundColor: theme.background900 }}>
+								<FeatureItem theme={theme} text="Voice" />
+								<FeatureItem theme={theme} text="Avatar" />
+								<FeatureItem theme={theme} text="User Icons & Emojis" />
+								<FeatureItem theme={theme} text="Audio" selected />
+								<FeatureItem theme={theme} text="Lights & Particles" />
+								<FeatureItem theme={theme} text="Shaders" />
+								<FeatureItem theme={theme} text="Custom Animations" />
 							</ul>
 						</div>
 					</div>
@@ -71,7 +75,7 @@ export const Menu = ({ theme }) => {
 							<BottomTab theme={theme} />
 							<BottomTab theme={theme} />
 							<BottomTab theme={theme} />
-							<BottomTab theme={theme} selected={true} />
+							<BottomTab theme={theme} selected />
 							<BottomTab theme={theme} />
 							<BottomTab theme={theme} />
 							<BottomTab theme={theme} />

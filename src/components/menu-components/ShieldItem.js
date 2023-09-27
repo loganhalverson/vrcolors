@@ -21,7 +21,7 @@ export const ShieldItem = ({ theme, text, selected = false }) => {
 			<li
 				id="shieldItem"
 				className="w-1/4 py-4 rounded-t-md text-center flex flex-col items-center"
-				style={{ backgroundColor: theme.background500, color: theme.text }}>
+				style={{ backgroundColor: theme.background900, color: theme.text }}>
 				<svg className="w-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style={{ color: theme.icons }}>
 					<path
 						fill="currentColor"

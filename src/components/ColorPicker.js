@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { SketchPicker } from 'react-color';
 import OutsideAlerter from './OutsideAlerter';
+import { generateShades } from '../Color';
 
-export const ColorPicker = ({ option, theme, setTheme, generateShades }) => {
+export const ColorPicker = ({ option, setTheme }) => {
 	const [background, setBackground] = useState('#2aabc1');
 	const [pickerVisible, setPickerVisible] = useState(false);
 	const [mousePosition, setMousePosition] = useState({ x: null, y: null });
@@ -49,13 +50,14 @@ export const ColorPicker = ({ option, theme, setTheme, generateShades }) => {
 		// Update color picker
 		setBackground(color.hex);
 
-		// Update theme
-		setTheme({
-			...theme,
-			[key]: color.hex,
+		setTheme((prevTheme) => {
+			return {
+				...prevTheme,
+				[key]: color.hex,
+			};
 		});
 
-		generateShades();
+		generateShades(key, setTheme);
 	};
 
 	// Destructures the mouseX and mouseY from the event.

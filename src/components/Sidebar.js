@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { ColorPicker } from '../components/ColorPicker';
 
-export const Sidebar = ({ theme, setTheme, generateShades }) => {
+export const Sidebar = ({ setTheme }) => {
 	const [visible, setVisible] = useState(true);
 
-	console.log(visible);
 	return (
 		<div
 			className={`bg-gray-200 pl-3 pr-6 drop-shadow-md z-[1] min-h-screen flex flex-col justify-center transition ${
@@ -20,12 +19,12 @@ export const Sidebar = ({ theme, setTheme, generateShades }) => {
 
 			{/* Color Picker */}
 			<div className="flex flex-col gap-y-2 flex-1 items-start justify-center">
-				<ColorPicker option={'Highlight'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
-				<ColorPicker option={'Icons'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
-				<ColorPicker option={'Buttons'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
-				<ColorPicker option={'Background'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
-				<ColorPicker option={'Text'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
-				<ColorPicker option={'Subtext'} theme={theme} setTheme={setTheme} generateShades={generateShades} />
+				<ColorPicker option={'Highlight'} setTheme={setTheme} />
+				<ColorPicker option={'Icons'} setTheme={setTheme} />
+				<ColorPicker option={'Buttons'} setTheme={setTheme} />
+				<ColorPicker option={'Background'} setTheme={setTheme} />
+				<ColorPicker option={'Text'} setTheme={setTheme} />
+				<ColorPicker option={'Subtext'} setTheme={setTheme} />
 			</div>
 
 			{/* About | Contact */}
