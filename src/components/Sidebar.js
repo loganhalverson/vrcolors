@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ColorPicker } from '../components/ColorPicker';
+import { ImportButton, ExportButton } from './Buttons';
 
-export const Sidebar = ({ setTheme }) => {
+export const Sidebar = () => {
 	const [visible, setVisible] = useState(true);
 
 	return (
@@ -19,16 +20,21 @@ export const Sidebar = ({ setTheme }) => {
 
 			{/* Color Picker */}
 			<div className="flex flex-col gap-y-2 flex-1 items-start justify-center">
-				<ColorPicker option={'Highlight'} setTheme={setTheme} />
-				<ColorPicker option={'Icons'} setTheme={setTheme} />
-				<ColorPicker option={'Buttons'} setTheme={setTheme} />
-				<ColorPicker option={'Background'} setTheme={setTheme} />
-				<ColorPicker option={'Text'} setTheme={setTheme} />
-				<ColorPicker option={'Subtext'} setTheme={setTheme} />
+				<ColorPicker option={'Highlight'} />
+				<ColorPicker option={'Icons'} />
+				<ColorPicker option={'Buttons'} />
+				<ColorPicker option={'Background'} />
+				<ColorPicker option={'Text'} />
+				<ColorPicker option={'Subtext'} />
+			</div>
+
+			<div className="flex flex-row justify-between px-1">
+				<ImportButton />
+				<ExportButton />
 			</div>
 
 			{/* About | Contact */}
-			<div className="flex flex-row gap-x-3 justify-center text-xl mb-6">
+			<div className="flex flex-row gap-x-3 justify-center text-xl mt-6 mb-6">
 				<a href="/about" className="hover:underline">
 					About
 				</a>

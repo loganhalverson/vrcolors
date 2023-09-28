@@ -1,12 +1,15 @@
-import React, { useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { SketchPicker } from 'react-color';
 import OutsideAlerter from './OutsideAlerter';
-import { generateShades } from '../Color';
+import { ThemeContext } from '../context/ThemeContext';
 
-export const ColorPicker = ({ option, setTheme }) => {
-	const [background, setBackground] = useState('#2aabc1');
+export const ColorPicker = ({ option }) => {
+	const [background, setBackground] = useState('#fff');
 	const [pickerVisible, setPickerVisible] = useState(false);
 	const [mousePosition, setMousePosition] = useState({ x: null, y: null });
+
+	// Destructure theme from context
+	const { theme, setTheme } = useContext(ThemeContext);
 
 	// Define the key of theme to change when the color picker is used.
 	// Set default colors.
@@ -15,39 +18,33 @@ export const ColorPicker = ({ option, setTheme }) => {
 		switch (option) {
 			case 'Highlight':
 				innerKey = 'highlight';
-				setBackground('#6be4f9');
 				break;
 			case 'Icons':
 				innerKey = 'icons';
-				setBackground('#29abc2');
 				break;
 			case 'Buttons':
 				innerKey = 'buttons';
-				setBackground('#0d3537');
 				break;
 			case 'Background':
 				innerKey = 'background';
-				setBackground('#1b222c');
 				break;
 			case 'Text':
 				innerKey = 'text';
-				setBackground('#bbbbbb');
 				break;
 			case 'Subtext':
 				innerKey = 'subtext';
-				setBackground('#008489');
 				break;
 			default:
 				innerKey = 'N/A';
-				setBackground('#000');
 				console.error('Invalid option provided to ColorPicker.');
-				break;
+				return '';
 		}
+
+		setBackground(theme[innerKey]);
 		return innerKey;
 	}, [option]);
 
 	const handleChangeComplete = (color) => {
-		// Update color picker
 		setBackground(color.hex);
 
 		setTheme((prevTheme) => {
@@ -56,9 +53,18 @@ export const ColorPicker = ({ option, setTheme }) => {
 				[key]: color.hex,
 			};
 		});
-
-		generateShades(key, setTheme);
 	};
+
+	// Another possible bad practice.
+	// I want the color pickers to update when a palette code is imported.
+	// The primitive approach is to have them listen to theme, seeing if their current background
+	// is different than their respective key:value value.
+	useEffect(() => {
+		if (background !== theme[key]) {
+			console.log(`${key} mismatch!`);
+			setBackground(theme[key]);
+		}
+	}, [theme]);
 
 	// Destructures the mouseX and mouseY from the event.
 	const handleClick = ({ pageX, pageY }) => {
@@ -67,8 +73,8 @@ export const ColorPicker = ({ option, setTheme }) => {
 	};
 
 	return (
-		<div>
-			<button onClick={handleClick} className="flex items-center drop-shadow-sm p-3 rounded-md">
+		<div className="w-full cursor-pointer" onClick={handleClick}>
+			<button className="flex items-center drop-shadow-sm p-3 rounded-md">
 				<svg className="inline-block rounded-md" fill={background} aria-hidden="true" width="36" height="36" viewBox="0 0 100 100">
 					<rect width="256" height="256" />
 				</svg>
