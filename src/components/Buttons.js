@@ -46,7 +46,15 @@ export const ExportButton = () => {
 
 	const handleClick = () => {
 		const paletteCode = exportCode(theme);
-		alert(`Your palette code is: \n${paletteCode}`);
+		// alert(`Your palette code is: \n${paletteCode}`);
+		try {
+			navigator.clipboard.writeText(paletteCode);
+			// Notification pop-up...
+			alert('Successfully copied to clipboard.');
+		} catch (e) {
+			alert('Something went wrong! Check the console for details.');
+			console.error(e.message);
+		}
 	};
 
 	return (

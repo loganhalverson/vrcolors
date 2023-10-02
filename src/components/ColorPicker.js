@@ -73,8 +73,8 @@ export const ColorPicker = ({ option }) => {
 	};
 
 	return (
-		<div className="w-full cursor-pointer" onClick={handleClick}>
-			<button className="flex items-center drop-shadow-sm p-3 rounded-md">
+		<div className="w-full">
+			<button onClick={handleClick} className="flex items-center drop-shadow-sm p-3 rounded-md w-full">
 				<svg className="inline-block rounded-md" fill={background} aria-hidden="true" width="36" height="36" viewBox="0 0 100 100">
 					<rect width="256" height="256" />
 				</svg>
