@@ -1,6 +1,10 @@
 /*
     A helper class to hold various color functions.
 */
+
+// Used in isLightColor(). Refers to the L value (0-100) of an HSL color.
+const LIGHT_THRESHOLD = 80;
+
 // Function retrieved from https://github.com/PimpTrizkit/PJs/wiki/12.-Shade,-Blend-and-Convert-a-Web-Color-(pSBC.js)#stackoverflow-archive-begin
 export const shadeHexColor = (color, percent) => {
 	var f = parseInt(color.slice(1), 16),
@@ -59,9 +63,9 @@ const RGBToHSL = ({ r, g, b }) => {
 	return [60 * h < 0 ? 60 * h + 360 : 60 * h, 100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0), (100 * (2 * l - s)) / 2];
 };
 
-// Given a HEX color, returns it's equivalent HSL light value.
-export const getLightness = (color) => {
-	return RGBToHSL(hexToRgb(color))[2];
+// Given a HEX color, return true if its HSL light value is greater than LIGHT_THRESHOLD.
+export const isLightColor = (color) => {
+	return RGBToHSL(hexToRgb(color))[2] >= LIGHT_THRESHOLD;
 };
 
 // Given a key (theme.background, theme.highlight, etc.), generates Tailwind shades for that color

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { getLightness, shadeHexColor } from '../Color';
+import { shadeHexColor, isLightColor } from '../Color';
 import { ThemeContext } from '../context/ThemeContext';
 
 export const DynamicBackground = (props) => {
@@ -7,7 +7,7 @@ export const DynamicBackground = (props) => {
 	const [style, setStyle] = useState({ background: theme.background });
 
 	useEffect(() => {
-		if (getLightness(theme.background) > 50) {
+		if (isLightColor(theme.background)) {
 			// Light background pattern
 			setStyle({
 				...style,
@@ -29,7 +29,7 @@ export const DynamicBackground = (props) => {
 	}, [theme.background]);
 
 	return (
-		<div className="flex min-h-screen flex-row items-center font-sans transition" style={style}>
+		<div className="flex min-h-screen h-full flex-row items-center font-sans transition overflow-clip" style={style}>
 			{props.children}
 		</div>
 	);
