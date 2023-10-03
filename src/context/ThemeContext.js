@@ -16,11 +16,6 @@ const ThemeProvider = ({ children }) => {
 		subtext: '#008489',
 	});
 
-	useEffect(() => {
-		// TODO - reconsider how we're implementing this. should we generate all of our shades for each key on mount?
-		generateShades('background', setTheme);
-	}, [theme.background]);
-
 	// Provide the state and functions to child components
 	const contextValue = {
 		theme,

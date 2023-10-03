@@ -1,11 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { BottomTab } from './menu-components/BottomTab';
 import { FeatureItem } from './menu-components/FeatureItem';
 import { ShieldItem } from './menu-components/ShieldItem';
 import { ThemeContext } from '../context/ThemeContext';
+import { generateShades } from '../Color';
+import { useParams } from 'react-router-dom';
 
 export const Menu = () => {
-	const { theme } = useContext(ThemeContext);
+	const { theme, setTheme } = useContext(ThemeContext);
+	const { paletteCode } = useParams();
+
+	// Check the URL for paramters just once.
+	useEffect(() => {
+		if (paletteCode) {
+			// validate code...
+			console.log('Palette code found.');
+		}
+	}, []);
+
+	// On background change, generate shades.
+	useEffect(() => {
+		generateShades('background', setTheme);
+	}, [theme.background]);
 
 	return (
 		<div className="container mx-auto">
@@ -57,18 +73,18 @@ export const Menu = () => {
 								<ul
 									className="flex flex-row flex-wrap justify-center items-start h-full gap-x-6 font-semibold rounded-b-lg"
 									style={{ backgroundColor: theme.background700 }}>
-									<FeatureItem theme={theme} text="Voice" />
-									<FeatureItem theme={theme} text="Avatar" />
-									<FeatureItem theme={theme} text="User Icons & Emojis" />
+									<FeatureItem theme={theme} text="Voice" selected />
+									<FeatureItem theme={theme} text="Avatar" selected />
+									<FeatureItem theme={theme} text="User Icons & Emojis" selected />
 									<FeatureItem theme={theme} text="Audio" selected />
 									<FeatureItem theme={theme} text="Lights & Particles" />
-									<FeatureItem theme={theme} text="Shaders" />
+									<FeatureItem theme={theme} text="Shaders" selected />
 									<FeatureItem theme={theme} text="Custom Animations" />
 								</ul>
 							</div>
 						</div>
 
-						<div id="bottom" className="absolute h-12 bottom-0 w-full translate-y-[46px] ">
+						<div id="bottom" className="absolute h-12 bottom-0 w-full translate-y-[50px] ">
 							<ul className="flex justify-center">
 								<BottomTab theme={theme} />
 								<BottomTab theme={theme} />

@@ -1,12 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { MenuColoringPage } from './pages/MenuColoringPage';
+import { AboutPage } from './pages/AboutPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 import './index.css';
-import App from './App';
+
+const router = createBrowserRouter([
+	{
+		path: '/:paletteCode?',
+		element: <MenuColoringPage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: '/about',
+		element: <AboutPage />,
+	},
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
-		<App />
+		<RouterProvider router={router} />
 	</React.StrictMode>
 );
 
