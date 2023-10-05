@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { SketchPicker } from 'react-color';
 import OutsideAlerter from './OutsideAlerter';
 import { ThemeContext } from '../context/ThemeContext';
+import { isLightColor } from '../Color';
 
 export const ColorPicker = ({ option }) => {
 	const [background, setBackground] = useState('#fff');
@@ -67,23 +68,19 @@ export const ColorPicker = ({ option }) => {
 	}, [theme]);
 
 	// Destructures the mouseX and mouseY from the event.
-	const handleClick = ({ pageX, pageY }) => {
+	const handleClick = ({ clientX, clientY }) => {
 		setPickerVisible(!pickerVisible);
-		setMousePosition({ x: pageX, y: pageY });
+		console.log(clientX, clientY);
+		setMousePosition({ x: clientX, y: clientY });
 	};
 
 	return (
-		<div className="w-full">
-			<button onClick={handleClick} className="flex items-center drop-shadow-sm p-3 rounded-md w-full">
-				<svg className="inline-block rounded-md" fill={background} aria-hidden="true" width="36" height="36" viewBox="0 0 100 100">
-					<rect width="256" height="256" />
-				</svg>
-				<span className="text-2xl text-black ml-4 mr-4">{option}</span>
-			</button>
+		<div>
+			<div onClick={handleClick} className="w-8 h-8 rounded-full ring" style={{ backgroundColor: background }} />
 
 			{/* Display the color picker conditionally. */}
 			{pickerVisible ? (
-				<div style={{ position: 'absolute', left: mousePosition.x + 10, top: mousePosition.y + 10, zIndex: 10 }}>
+				<div className="absolute -translate-x-[50%]" style={{ left: mousePosition.x, top: mousePosition.y + 16, zIndex: 10 }}>
 					<OutsideAlerter callback={() => setPickerVisible(false)}>
 						<SketchPicker color={background} onChangeComplete={handleChangeComplete} />
 					</OutsideAlerter>

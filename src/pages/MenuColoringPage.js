@@ -1,16 +1,17 @@
 import React from 'react';
 import { ThemeProvider } from '../context/ThemeContext';
 import { DynamicBackground } from '../components/DynamicBackground';
-import { Sidebar } from '../components/Sidebar';
 import { Menu } from '../components/Menu';
+import { Navbar } from '../components/Navbar';
 
 export const MenuColoringPage = () => {
 	return (
 		<ThemeProvider>
-			<DynamicBackground>
-				<Sidebar />
+			<DynamicBackground />
+			<Navbar currentPage={'Home'} colorFunctionality />
+			<div className="flex flex-row items-center font-sans">
 				<Menu />
-			</DynamicBackground>
+			</div>
 		</ThemeProvider>
 	);
 };

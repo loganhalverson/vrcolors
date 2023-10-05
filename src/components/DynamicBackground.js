@@ -28,9 +28,7 @@ export const DynamicBackground = (props) => {
 		}
 	}, [theme.background]);
 
-	return (
-		<div className="flex min-h-screen h-full flex-row items-center font-sans transition overflow-clip" style={style}>
-			{props.children}
-		</div>
-	);
+	// <div className="fixed z-[-1] w-full bg-gradient-to-b from-blue-950 to-gray-950 filter saturate-[80%] min-h-screen" />
+
+	return <div className="fixed z-[-1] w-full filter saturate-[80%] min-h-screen" style={style} />;
 };
