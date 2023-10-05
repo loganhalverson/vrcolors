@@ -23,7 +23,7 @@ export const FeatureItem = ({ theme, text, selected = false }) => {
 
 	return (
 		<li>
-			<div className="w-32 h-12 mt-4 flex justify-center items-center">
+			<div className="flex items-center justify-center w-32 h-12 mt-2">
 				<Switch
 					onChange={handleChange}
 					checked={checked}
@@ -38,7 +38,7 @@ export const FeatureItem = ({ theme, text, selected = false }) => {
 			</div>
 			<div
 				onClick={handleChange}
-				className="mt-2 w-32 p-2 py-1 aspect-square text-center flex flex-col items-center rounded-xl cursor-pointer transition-colors"
+				className="flex flex-col items-center w-32 p-2 py-1 mt-2 mb-16 text-center transition-colors cursor-pointer aspect-square rounded-xl"
 				style={enabled ? selectedItemStyle : defaultItemStyle}>
 				<svg
 					className="w-3/4 transition-colors"
@@ -52,7 +52,7 @@ export const FeatureItem = ({ theme, text, selected = false }) => {
 				</svg>
 
 				{/* Adjust top margin if text is double line or not. */}
-				<p className="h-1/4 font-semibold mt-1 leading-tight" style={{ color: theme.text, marginTop: text.length > 8 ? '-0.25rem' : '0.25rem' }}>
+				<p className="mt-1 font-semibold leading-tight select-none h-1/4" style={{ color: theme.text, marginTop: text.length > 8 ? '-0.25rem' : '0.25rem' }}>
 					{text}
 				</p>
 			</div>
