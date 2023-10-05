@@ -42,10 +42,10 @@ export const Navbar = ({ currentPage, colorFunctionality }) => {
 			</div>
 
 			{colorFunctionality && (
-				<div className="p-3 mx-auto border-t border-gray-700 max-w-screen-2xl">
-					<ul className="flex flex-col items-center justify-between flex-1 font-medium gap-y-4 md:gap-y-0 md:flex-row gap-x-8">
-						<div className="w-full text-center text-gray-600 md:text-left md:w-1/3">Click the circles to change the menu colors.</div>
-						<div className="flex items-center justify-center w-full md:w-1/3 gap-x-6">
+				<div className="mx-auto border-t border-gray-700 max-w-screen-2xl">
+					<ul className="flex flex-col items-center justify-between flex-1 px-3 py-2 font-medium gap-y-4 md:gap-y-0 md:flex-row gap-x-8">
+						<div className="w-full md:text-xl text-center text-gray-600 md:text-left md:w-1/3">Click the circles to change the menu colors.</div>
+						<div className="flex items-end justify-center w-full rounded-xl md:w-1/3 gap-x-6">
 							<ColorPicker option={'Highlight'} />
 							<ColorPicker option={'Icons'} />
 							<ColorPicker option={'Buttons'} />

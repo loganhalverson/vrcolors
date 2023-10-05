@@ -75,8 +75,8 @@ export const ColorPicker = ({ option }) => {
 	};
 
 	return (
-		<div>
-			<div onClick={handleClick} className="w-8 h-8 rounded-full ring" style={{ backgroundColor: background }} />
+		<>
+			<button onClick={handleClick} className="relative w-8 h-8 rounded-full ring" style={{ backgroundColor: background }} />
 
 			{/* Display the color picker conditionally. */}
 			{pickerVisible ? (
@@ -86,6 +86,6 @@ export const ColorPicker = ({ option }) => {
 					</OutsideAlerter>
 				</div>
 			) : null}
-		</div>
+		</>
 	);
 };

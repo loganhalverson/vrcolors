@@ -24,8 +24,8 @@ export const Menu = () => {
 	}, [theme.background]);
 
 	return (
-		<div className="mx-auto">
-			<div className="flex flex-row h-[48rem] flex-nowrap w-fit">
+		<div className="flex items-center justify-center mx-auto mt-8 flex-nowrap w-fit 3xl:scale-95 3xl:mt-0 4xl:scale-105 4xl:mt-16">
+			<div className="flex flex-row h-[48rem] ">
 				<div
 					id="l-wing"
 					className="self-center h-[90%] p-3 text-center rounded-r-md -scale-x-100"
@@ -38,9 +38,9 @@ export const Menu = () => {
 					</svg>
 				</div>
 
-				<div id="center" className="w-fit h-fit rounded-xl">
+				<div id="center" className="h-fit rounded-xl">
 					<div className="border-2 rounded-xl" style={{ borderColor: `${theme.background100}` }}>
-						{/* Navbar */}
+						{/* Header */}
 						<div className="flex items-center py-4 rounded-t-lg" style={{ backgroundColor: theme.background300, color: theme.text }}>
 							<span className="mx-12 text-4xl font-bold tracking-wide">Safety</span>
 						</div>

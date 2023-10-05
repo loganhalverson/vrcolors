@@ -9,9 +9,7 @@ export const MenuColoringPage = () => {
 		<ThemeProvider>
 			<DynamicBackground />
 			<Navbar currentPage={'Home'} colorFunctionality />
-			<div className="flex flex-row items-center font-sans">
-				<Menu />
-			</div>
+			<Menu />
 		</ThemeProvider>
 	);
 };
