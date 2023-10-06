@@ -21,13 +21,18 @@ export const Navbar = ({ currentPage, colorFunctionality }) => {
 				<div className="block w-auto">
 					<ul className="flex flex-row items-center font-medium gap-x-8">
 						<li>
-							<a href="/" className={`hover:text-blue-400 ${currentPage === 'Home' ? 'text-blue-600' : 'text-white'}`}>
+							<a href="/F4EBD0-B68D40-0F0F10-0F0F10-D6AD60-B68D40" className={`hover:text-blue-400 ${currentPage === 'Home' ? 'text-blue-600' : 'text-white'}`}>
 								Home
 							</a>
 						</li>
 						<li>
 							<a href="/about" className={`hover:text-blue-400 ${currentPage === 'About' ? 'text-blue-600' : 'text-white'}`}>
 								About
+							</a>
+						</li>
+						<li>
+							<a href="/how-to" className={`hover:text-blue-400 ${currentPage === 'How To Use' ? 'text-blue-600' : 'text-white'}`}>
+								How to Use
 							</a>
 						</li>
 						<li>

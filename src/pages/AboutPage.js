@@ -12,10 +12,10 @@ export const AboutPage = () => {
 
 			{/* Site Description */}
 			<div className="p-2 mx-auto min-w-screen-xl max-w-screen-2xl">
-				<div className="flex flex-row md:mt-16 gap-x-12 ">
+				<div className="flex flex-col mx-6 md:mx-0 md:flex-row md:mt-16 gap-x-12">
 					<img src="https://i.imgur.com/n2IlJ5s.png" className="rounded-md object-scale-down object-top max-w-4xl drop-shadow-md flex-[0.2]" alt="" />
-					<div className="text-xl leading-relaxed tracking-wide text-neutral-100">
-						<h2 className="text-5xl font-bold tracking-wider">VRColors</h2>
+					<div className="text-sm md:text-xl leading-relaxed tracking-wide text-neutral-100 text-center md:text-left ">
+						<h2 className="text-4xl md:text-5xl font-bold tracking-wider text-center md:text-left my-4 md:my-0">VRColors</h2>
 
 						<p className="mt-6">
 							This website seeks to emulate the custom UI themes available to VRChat Plus users. It also serves as a way of sharing these themes, instead of
@@ -39,10 +39,10 @@ export const AboutPage = () => {
 			<div className="mx-auto my-16 border-t max-w-screen-2xl border-blue-300/50" />
 
 			{/* Personal Section */}
-			<div className="max-w-screen-xl p-2 mx-auto font-sans text-white">
-				<div className="flex flex-row gap-x-12">
-					<div className="text-left align-middle text-xl text-neutral-100 leading-relaxed flex flex-col gap-y-6  flex-[0.8]">
-						<h2 className="text-4xl font-semibold tracking-wider">What's your deal?</h2>
+			<div className="max-w-screen-xl p-2 mx-6 md:mx-auto font-sans text-white">
+				<div className="flex flex-col md:flex-row gap-x-12">
+					<div className="text-center md:text-left align-middle text-sm md:text-xl text-neutral-100 leading-relaxed flex flex-col gap-y-6  flex-[0.8]">
+						<h2 className="text-3xl md:text-4xl font-semibold tracking-wider">What's your deal?</h2>
 						<p>
 							I've been on VRChat for about four years on and off. It's a silly place with silly people, but the most important friendships I've made in my life
 							have come from it.

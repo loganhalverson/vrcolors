@@ -105,10 +105,9 @@ export const ColorPicker = ({ option }) => {
 	// is different than their respective key:value value.
 	useEffect(() => {
 		if (background !== theme[key]) {
-			console.log(`${key} mismatch!`);
 			setBackground(theme[key]);
 		}
-	}, [theme]);
+	}, [theme[key]]);
 
 	return (
 		<>

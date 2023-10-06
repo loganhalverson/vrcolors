@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, redirect, Navigate, useNavigate } from 'react-router-dom';
 import { MenuColoringPage } from './pages/MenuColoringPage';
 import { AboutPage } from './pages/AboutPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { HowToPage } from './pages/HowToPage';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
 	{
 		path: '/about',
 		element: <AboutPage />,
+	},
+	{
+		path: '/how-to',
+		element: <HowToPage />,
 	},
 ]);
 

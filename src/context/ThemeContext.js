@@ -1,5 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { generateShades } from '../Color';
+import React, { createContext, useState } from 'react';
 
 // Create a context
 const ThemeContext = createContext();
