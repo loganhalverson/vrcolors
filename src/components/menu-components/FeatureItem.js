@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { HoverContext } from '../../context/HoverContext';
 import Switch from 'react-switch';
 import { shadeHexColor } from '../../Color';
 
 export const FeatureItem = ({ theme, text, selected = false }) => {
+	const { hovered, setHovered, hoverState } = useContext(HoverContext);
 	const [checked, setChecked] = useState(selected);
 	const [enabled, setEnabled] = useState(selected);
 
-	const handleChange = () => {
+	const handleClick = () => {
 		setChecked(!checked);
 		setEnabled(!enabled);
 	};
@@ -23,9 +25,9 @@ export const FeatureItem = ({ theme, text, selected = false }) => {
 
 	return (
 		<li>
-			<div className="flex items-center justify-center w-32 h-12 mt-2">
+			<div className={`flex items-center justify-center w-32 h-12 mt-2 filter transition ${hovered.background ? 'brightness-150' : 'brightness-100'}`}>
 				<Switch
-					onChange={handleChange}
+					onChange={handleClick}
 					checked={checked}
 					checkedIcon={false}
 					uncheckedIcon={false}
@@ -37,11 +39,16 @@ export const FeatureItem = ({ theme, text, selected = false }) => {
 				/>
 			</div>
 			<div
-				onClick={handleChange}
-				className="flex flex-col items-center w-32 p-2 py-1 mt-2 mb-16 text-center transition-colors cursor-pointer aspect-square rounded-xl"
+				onClick={handleClick}
+				className={`flex flex-col items-center w-32 p-2 py-1 mt-2 mb-16 text-center transition cursor-pointer aspect-square rounded-xl filter 
+				${hovered.background && !enabled ? hoverState : ''} 
+				${hovered.buttons && enabled ? hoverState : ''}`}
 				style={enabled ? selectedItemStyle : defaultItemStyle}>
 				<svg
-					className="w-3/4 transition-colors"
+					className={`w-3/4 transition 
+					${enabled && hovered.icons ? hoverState : ''} 
+					${!enabled && hovered.buttons ? hoverState : ''}
+					`}
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
 					style={{ color: enabled ? theme.icons : theme.buttons }}>
@@ -52,7 +59,9 @@ export const FeatureItem = ({ theme, text, selected = false }) => {
 				</svg>
 
 				{/* Adjust top margin if text is double line or not. */}
-				<p className="mt-1 font-semibold leading-tight select-none h-1/4" style={{ color: theme.text, marginTop: text.length > 8 ? '-0.25rem' : '0.25rem' }}>
+				<p
+					className={`mt-1 font-semibold leading-tight select-none h-1/4 filter transition ${hovered.text ? hoverState : ''}`}
+					style={{ color: theme.text, marginTop: text.length > 8 ? '-0.25rem' : '0.25rem' }}>
 					{text}
 				</p>
 			</div>

@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { HoverContext } from '../../context/HoverContext';
 import PropTypes from 'prop-types';
 
 export const BottomTab = ({ theme, selected = false }) => {
+	const { hovered, setHovered, hoverState } = useContext(HoverContext);
+
 	return (
 		<li
-			className={`h-16 w-20 p-2 aspect-square rounded-b-xl flex justify-center ${selected ? 'scale-y-125 translate-y-2' : ''}`}
+			className={`h-16 w-20 p-2 aspect-square rounded-b-xl flex justify-center transition
+			${selected ? 'scale-y-125 translate-y-2' : ''}
+			${selected && hovered.highlight ? hoverState : ''}
+			${!selected && hovered.background ? hoverState : ''}
+			`}
 			style={{ backgroundColor: selected ? theme.highlight : theme.background700 }}>
 			<svg
-				className={`h-full ${selected ? 'scale-y-[.80] -translate-y-1' : ''}`}
+				className={`h-full transition 
+				${selected ? 'scale-y-[.80] -translate-y-1' : ''}
+				${selected && hovered.icons ? hoverState : ''}
+				${!selected && hovered.buttons ? hoverState : ''}
+				`}
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
 				style={{ color: selected ? theme.icons : theme.buttons }}>

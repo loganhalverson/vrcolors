@@ -3,7 +3,6 @@ import { ImportButton, ExportButton } from './Buttons';
 import { ColorPicker } from './ColorPicker';
 
 export const Navbar = ({ currentPage, colorFunctionality }) => {
-	console.log('currentPage is Home?', currentPage === 'Home');
 	return (
 		<nav className="z-10 bg-white border-gray-200 dark:bg-gray-900">
 			<div className="flex flex-wrap items-center justify-between p-3 mx-auto max-w-screen-2xl">

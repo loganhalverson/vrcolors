@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { SketchPicker } from 'react-color';
 import OutsideAlerter from './OutsideAlerter';
 import { ThemeContext } from '../context/ThemeContext';
-import { isLightColor } from '../Color';
+import emitter from '../context/EventBus';
 
 export const ColorPicker = ({ option }) => {
 	const [background, setBackground] = useState('#fff');
@@ -12,8 +12,36 @@ export const ColorPicker = ({ option }) => {
 	// Destructure theme from context
 	const { theme, setTheme } = useContext(ThemeContext);
 
+	// Define the event to transmit when contacting EventBus.
+	const eventTag = useMemo(() => {
+		let innerTag = '';
+		switch (option) {
+			case 'Highlight':
+				innerTag = 'HIGHLIGHT-HOVER';
+				break;
+			case 'Icons':
+				innerTag = 'ICONS-HOVER';
+				break;
+			case 'Buttons':
+				innerTag = 'BUTTONS-HOVER';
+				break;
+			case 'Background':
+				innerTag = 'BACKGROUND-HOVER';
+				break;
+			case 'Text':
+				innerTag = 'TEXT-HOVER';
+				break;
+			case 'Subtext':
+				innerTag = 'SUBTEXT-HOVER';
+				break;
+			default:
+				console.error('Invalid option provided to ColorPicker.');
+				return 'N/A';
+		}
+		return innerTag;
+	}, [option]);
+
 	// Define the key of theme to change when the color picker is used.
-	// Set default colors.
 	const key = useMemo(() => {
 		let innerKey = '';
 		switch (option) {
@@ -56,6 +84,21 @@ export const ColorPicker = ({ option }) => {
 		});
 	};
 
+	// Destructures the mouseX and mouseY from the event.
+	const handleClick = ({ clientX, clientY }) => {
+		setPickerVisible(!pickerVisible);
+		console.log(clientX, clientY);
+		setMousePosition({ x: clientX, y: clientY });
+	};
+
+	const handleMouseEnter = () => {
+		emitter.emit(eventTag, true);
+	};
+
+	const handleMouseLeave = () => {
+		emitter.emit(eventTag, false);
+	};
+
 	// Another possible bad practice.
 	// I want the color pickers to update when a palette code is imported.
 	// The primitive approach is to have them listen to theme, seeing if their current background
@@ -67,16 +110,20 @@ export const ColorPicker = ({ option }) => {
 		}
 	}, [theme]);
 
-	// Destructures the mouseX and mouseY from the event.
-	const handleClick = ({ clientX, clientY }) => {
-		setPickerVisible(!pickerVisible);
-		console.log(clientX, clientY);
-		setMousePosition({ x: clientX, y: clientY });
-	};
-
 	return (
 		<>
-			<button onClick={handleClick} className="relative w-8 h-8 rounded-full ring" style={{ backgroundColor: background }} />
+			{/* Label that appears on hover and while color picker is open. */}
+
+			<button
+				onClick={handleClick}
+				className="relative w-8 h-8 rounded-full ring group transition hover:scale-105"
+				style={{ backgroundColor: background }}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}>
+				<span className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-8 bg-gray-950 rounded-lg py-1 px-2 text-center text-gray-50 transition scale-0 group-hover:-translate-y-16 group-hover:scale-100">
+					{option}
+				</span>
+			</button>
 
 			{/* Display the color picker conditionally. */}
 			{pickerVisible ? (
