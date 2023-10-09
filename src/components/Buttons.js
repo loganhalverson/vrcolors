@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { importCode, exportCode } from '../ImportExport';
+import { convertPaletteCodeToTheme, convertThemeToPaletteCode } from '../utils/ImportExport';
 import { ThemeContext } from '../context/ThemeContext';
+import { generateShades } from '../utils/Color';
 
 /*
 	It is assumed that each of these buttons has access to ThemeContext.
@@ -17,7 +18,7 @@ export const ImportButton = () => {
 		if (paletteCode == null) {
 			console.log('User cancelled the prompt.');
 		} else {
-			const newTheme = importCode(paletteCode);
+			const newTheme = convertPaletteCodeToTheme(paletteCode);
 			setTheme(() => {
 				return {
 					highlight: newTheme.highlight,
@@ -28,6 +29,7 @@ export const ImportButton = () => {
 					subtext: newTheme.subtext,
 				};
 			});
+			generateShades('background', setTheme);
 		}
 	};
 
@@ -45,7 +47,7 @@ export const ExportButton = () => {
 	const { theme } = useContext(ThemeContext);
 
 	const handleClick = () => {
-		const paletteCode = exportCode(theme);
+		const paletteCode = convertThemeToPaletteCode(theme);
 		// alert(`Your palette code is: \n${paletteCode}`);
 		try {
 			navigator.clipboard.writeText(paletteCode);

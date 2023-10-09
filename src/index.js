@@ -5,7 +5,7 @@ import { MenuColoringPage } from './pages/MenuColoringPage';
 import { AboutPage } from './pages/AboutPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { HowToPage } from './pages/HowToPage';
-import './index.css';
+import './styles/index.css';
 
 const router = createBrowserRouter([
 	{

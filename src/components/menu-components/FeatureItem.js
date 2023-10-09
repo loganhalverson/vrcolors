@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { HoverContext } from '../../context/HoverContext';
 import Switch from 'react-switch';
-import { shadeHexColor } from '../../Color';
+import { shadeHexColor } from '../../utils/Color';
 
 export const FeatureItem = ({ theme, text, selected = false }) => {
 	const { hovered, setHovered, hoverState } = useContext(HoverContext);

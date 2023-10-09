@@ -1,22 +1,38 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { ThemeContext } from '../context/ThemeContext';
+import { HoverContext } from '../context/HoverContext';
 import { BottomTab } from './menu-components/BottomTab';
 import { FeatureItem } from './menu-components/FeatureItem';
 import { ShieldItem } from './menu-components/ShieldItem';
-import { ThemeContext } from '../context/ThemeContext';
-import { HoverContext } from '../context/HoverContext';
-import { generateShades } from '../Color';
-import { useParams } from 'react-router-dom';
+import { generateShades } from '../utils/Color';
+import { convertPaletteCodeToTheme } from '../utils/ImportExport';
 
 export const Menu = () => {
 	const { theme, setTheme } = useContext(ThemeContext);
 	const { hovered, setHovered, hoverState } = useContext(HoverContext);
 
-	// Check the URL for parameters just once.
+	// Check the URL for a palette code.
+	// 10062023 - I'm debating on where this should take place. Menu.js is my best bet for now because it is the
+	// highest level component with access to ThemeContext that is neither context nor page.
 	const { paletteCode } = useParams();
+	const currentUrl = window.location.href;
+
 	useEffect(() => {
 		if (paletteCode) {
 			// validate code...
-			console.log('Palette code found.');
+			const newTheme = convertPaletteCodeToTheme(paletteCode);
+			setTheme(() => {
+				return {
+					highlight: newTheme.highlight,
+					icons: newTheme.icons,
+					buttons: newTheme.buttons,
+					background: newTheme.background,
+					text: newTheme.text,
+					subtext: newTheme.subtext,
+				};
+			});
+			generateShades('background', setTheme);
 		}
 	}, []);
 
