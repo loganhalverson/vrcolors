@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { convertPaletteCodeToTheme, convertThemeToPaletteCode } from '../utils/ImportExport';
 import { ThemeContext } from '../context/ThemeContext';
 import { generateShades } from '../utils/Color';
+import { toast } from 'react-toastify';
 
 /*
 	It is assumed that each of these buttons has access to ThemeContext.
@@ -19,17 +20,31 @@ export const ImportButton = () => {
 			console.log('User cancelled the prompt.');
 		} else {
 			const newTheme = convertPaletteCodeToTheme(paletteCode);
-			setTheme(() => {
-				return {
-					highlight: newTheme.highlight,
-					icons: newTheme.icons,
-					buttons: newTheme.buttons,
-					background: newTheme.background,
-					text: newTheme.text,
-					subtext: newTheme.subtext,
-				};
-			});
-			generateShades('background', setTheme);
+			if (newTheme) {
+				setTheme(() => {
+					return {
+						highlight: newTheme.highlight,
+						icons: newTheme.icons,
+						buttons: newTheme.buttons,
+						background: newTheme.background,
+						text: newTheme.text,
+						subtext: newTheme.subtext,
+					};
+				});
+				generateShades('background', setTheme);
+			} else {
+				// Nothing returned, thus invalid code was provided.
+				toast.error(`Invalid palette code provided. A valid palette code will look like: #F4EBD0,#B68D40,#0F0F10,#0F0F10,#D6AD60,#B68D40`, {
+					position: 'top-center',
+					autoClose: 4000,
+					hideProgressBar: true,
+					closeOnClick: true,
+					pauseOnHover: false,
+					draggable: false,
+					progress: undefined,
+					theme: 'dark',
+				});
+			}
 		}
 	};
 
@@ -48,13 +63,29 @@ export const ExportButton = () => {
 
 	const handleClick = () => {
 		const paletteCode = convertThemeToPaletteCode(theme);
-		// alert(`Your palette code is: \n${paletteCode}`);
 		try {
 			navigator.clipboard.writeText(paletteCode);
-			// Notification pop-up...
-			alert('Successfully copied to clipboard.');
+			toast.success('Palette code copied to clipboard!', {
+				position: 'top-center',
+				autoClose: 2000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: false,
+				draggable: false,
+				progress: undefined,
+				theme: 'dark',
+			});
 		} catch (e) {
-			alert('Something went wrong! Check the console for details.');
+			toast.error(`Something went wrong! ${e.message}`, {
+				position: 'top-center',
+				autoClose: 4000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: 'dark',
+			});
 			console.error(e.message);
 		}
 	};

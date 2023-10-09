@@ -9,16 +9,6 @@ export const convertPaletteCodeToTheme = (input) => {
 	// Define the keys in the desired order
 	const keys = ['highlight', 'icons', 'buttons', 'background', 'text', 'subtext'];
 
-	// If an error is thrown, revert to default colors.
-	const fallback = {
-		highlight: '#6be4f9',
-		icons: '#2aabc1',
-		buttons: '#0d3537',
-		background: '#1b222c',
-		text: '#bbbbbb',
-		subtext: '#008489',
-	};
-
 	// Remove any whitespace and non-hex characters from the input
 	const cleanedInput = input.replace(/[^a-fA-F0-9]/g, '');
 
@@ -27,7 +17,7 @@ export const convertPaletteCodeToTheme = (input) => {
 		// TODO - notify user of error
 		// throw new Error('Invalid input string length');
 		console.error('importCode(): Invalid palette code provided.');
-		return fallback;
+		return '';
 	}
 
 	// Split the cleaned input into an array of 6-character chunks
