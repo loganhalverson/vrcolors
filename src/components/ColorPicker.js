@@ -110,12 +110,11 @@ export const ColorPicker = ({ option }) => {
 	}, [theme[key]]);
 
 	return (
-		<>
+		<div>
 			{/* Label that appears on hover and while color picker is open. */}
-
 			<button
 				onClick={handleClick}
-				className="relative w-8 h-8 rounded-full ring group transition hover:scale-105"
+				className="w-8 h-8 rounded-full ring group transition hover:scale-105"
 				style={{ backgroundColor: background }}
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}>
@@ -126,12 +125,15 @@ export const ColorPicker = ({ option }) => {
 
 			{/* Display the color picker conditionally. */}
 			{pickerVisible ? (
-				<div className="absolute -translate-x-[50%]" style={{ left: mousePosition.x, top: mousePosition.y + 16, zIndex: 10 }}>
-					<OutsideAlerter callback={() => setPickerVisible(false)}>
-						<SketchPicker color={background} onChangeComplete={handleChangeComplete} />
-					</OutsideAlerter>
+				<div className="relative">
+					<div className="absolute -translate-x-[40%]" style={{ top: 16, zIndex: 10 }}>
+						{/* <div className="absolute" style={{ left: mousePosition.x, top: mousePosition.y + 16, zIndex: 10 }}> */}
+						<OutsideAlerter callback={() => setPickerVisible(false)}>
+							<SketchPicker color={background} onChangeComplete={handleChangeComplete} />
+						</OutsideAlerter>
+					</div>
 				</div>
 			) : null}
-		</>
+		</div>
 	);
 };

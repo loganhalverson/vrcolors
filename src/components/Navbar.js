@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { ImportButton, ExportButton } from './Buttons';
 import { ColorPicker } from './ColorPicker';
 
 export const Navbar = ({ currentPage, colorFunctionality }) => {
+	const [onboarding, setOnboarding] = useState(true);
+
+	const keys = ['Highlight', 'Icons', 'Buttons', 'Background', 'Text', 'Subtext'];
+
+	const clearOnboarding = () => {
+		// Store value in local storage.
+		localStorage.setItem('isFirstVisit', false);
+		setOnboarding(false);
+	};
+
+	// Check if it is user's first visit.
+	useMemo(() => {
+		if (localStorage.getItem('isFirstVisit') === null) {
+			setOnboarding(true);
+		}
+	}, [onboarding]);
+
 	return (
 		<nav className="z-10 bg-white border-gray-200 dark:bg-gray-900">
 			<div className="flex flex-wrap items-center justify-between p-3 mx-auto max-w-screen-2xl">
@@ -49,13 +66,37 @@ export const Navbar = ({ currentPage, colorFunctionality }) => {
 				<div className="mx-auto border-t border-gray-700 max-w-screen-2xl">
 					<ul className="flex flex-col items-center justify-between flex-1 px-3 py-2 font-medium gap-y-4 md:gap-y-0 md:flex-row gap-x-8">
 						<div className="w-full md:text-xl text-center text-gray-600 md:text-left md:w-1/3">Click the circles to change the menu colors.</div>
-						<div className="flex items-end justify-center w-full rounded-xl md:w-1/3 gap-x-6">
-							<ColorPicker option={'Highlight'} />
-							<ColorPicker option={'Icons'} />
-							<ColorPicker option={'Buttons'} />
-							<ColorPicker option={'Background'} />
-							<ColorPicker option={'Text'} />
-							<ColorPicker option={'Subtext'} />
+						<div className="px-4 relative z-[1]">
+							<div className="relative flex items-end justify-center w-full rounded-xl gap-x-6 p-2 px-4 bg-gray-900 z-[2]">
+								{keys.map((key, idx) => {
+									return (
+										<div onClick={() => clearOnboarding()}>
+											<ColorPicker option={key} key={idx} />
+										</div>
+									);
+								})}
+							</div>
+
+							{/* If it's the user's first visit, display the onboarding help. */}
+							{onboarding && (
+								<>
+									{/* Hide onBoarding if the user clicks anywhere. */}
+									<div onClick={() => clearOnboarding()} className="fixed min-h-screen min-w-full z-[3]" />
+									<div className="absolute -inset-2 animate-pulse bg-gradient-to-br from-pink-600 to-blue-600 rounded-lg blur-lg z-[1]" />
+									<div className="fixed text-white top-0 left-0 min-h-screen bg-neutral-950 opacity-95 min-w-full">
+										<button
+											onClick={() => clearOnboarding()}
+											className="p-4 rounded-full m-4 my-2 w-8 h-8 flex justify-center items-center text-white text-3xl">
+											x
+										</button>
+									</div>
+									<span className="absolute left-[50%] -translate-x-[50%] mt-4 text-white font-semibold text-center w-3/4 text-xl">
+										Click on the circles to{' '}
+										<span className="bg-gradient-to-br bg-clip-text text-transparent from-pink-600 to-blue-700 filter brightness-200">change the colors</span>{' '}
+										of the menu below.
+									</span>
+								</>
+							)}
 						</div>
 						<div className="flex items-center justify-center w-full md:justify-end md:w-1/3 gap-x-4">
 							<ImportButton />
