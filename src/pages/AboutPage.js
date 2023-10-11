@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
+import { ContactList } from '../components/ContactList';
 
 export const AboutPage = () => {
 	return (
@@ -47,15 +48,12 @@ export const AboutPage = () => {
 							I've been on VRChat for about four years on and off. It's a silly place with silly people, but the most important friendships I've made in my life
 							have come from it.
 						</p>
-						<p>
-							It's come a long way, and I wanted to give back however I could. Being your classic VR nerd, I graduated with a computer science degree. One whim
-							led to another, and now we're here.
-						</p>
 
-						<p>
-							All that said, I would be remiss if I didn't throw in pictures of my buddies like so many of the worlds I've been to. Find some of my favorite
-							pictures below.
-						</p>
+						<p>You can find all my socials below. Ask me about the development process of the website! It was a ton of fun to make.</p>
+
+						<ContactList />
+
+						<p>As is tradition with VRC creation, I gotta throw in some of my favorite pictures I've taken over the years. Find them below.</p>
 					</div>
 
 					<img src="https://i.imgur.com/j6edbOg.jpeg" className="rounded-lg object-contain object-top max-w-2xl drop-shadow-md flex-[0.2]" alt="" />

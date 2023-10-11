@@ -3,7 +3,7 @@ import { ImportButton, ExportButton } from './Buttons';
 import { ColorPicker } from './ColorPicker';
 
 export const Navbar = ({ currentPage, colorFunctionality }) => {
-	const [onboarding, setOnboarding] = useState(true);
+	const [onboarding, setOnboarding] = useState(false);
 
 	const keys = ['Highlight', 'Icons', 'Buttons', 'Background', 'Text', 'Subtext'];
 
@@ -52,12 +52,6 @@ export const Navbar = ({ currentPage, colorFunctionality }) => {
 								How to Use
 							</a>
 						</li>
-						<li>
-							{/* Eventually, display a pop-up that contains various contact information -- discord, email, vrchat, etc. */}
-							<a href="mailto:eldritchBogo@protonmail.com" className="text-white hover:text-blue-400">
-								Contact
-							</a>
-						</li>
 					</ul>
 				</div>
 			</div>
@@ -90,7 +84,7 @@ export const Navbar = ({ currentPage, colorFunctionality }) => {
 											x
 										</button>
 									</div>
-									<span className="absolute left-[50%] -translate-x-[50%] mt-4 text-white font-semibold text-center w-3/4 text-xl">
+									<span className="absolute left-1/2 -translate-x-1/2 mt-4 text-white font-semibold text-center w-3/4 text-xl">
 										Click on the circles to{' '}
 										<span className="bg-gradient-to-br bg-clip-text text-transparent from-pink-600 to-blue-700 filter brightness-200">change the colors</span>{' '}
 										of the menu below.

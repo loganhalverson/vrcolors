@@ -118,7 +118,7 @@ export const ColorPicker = ({ option }) => {
 				style={{ backgroundColor: background }}
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}>
-				<span className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-8 bg-gray-950 rounded-lg py-1 px-2 text-center text-gray-50 transition scale-0 group-hover:-translate-y-16 group-hover:scale-100">
+				<span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-8 bg-gray-950 rounded-lg py-1 px-2 text-center text-gray-50 transition scale-0 group-hover:-translate-y-16 group-hover:scale-100">
 					{option}
 				</span>
 			</button>
