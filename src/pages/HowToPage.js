@@ -6,7 +6,7 @@ export const HowToPage = () => {
 		<>
 			{/* Scrolling background */}
 			<div className="fixed z-[-1] w-full bg-gradient-to-b from-blue-950 to-gray-950 filter saturate-[80%] min-h-screen" />
-			<Navbar currentPage={'How To Use'} />
+			<Navbar />
 
 			<h2 className="block text-center my-16 font-bold tracking-wider text-gray-50  text-7xl  py-4 ">I've got this code; now what?</h2>
 

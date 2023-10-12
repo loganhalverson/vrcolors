@@ -9,7 +9,7 @@ export const AboutPage = () => {
 			<div className="fixed z-[-1] w-full bg-gradient-to-b from-blue-950 to-gray-950 filter saturate-[80%] min-h-screen" />
 
 			{/* Navbar */}
-			<Navbar currentPage={'About'} />
+			<Navbar />
 
 			{/* Site Description */}
 			<div className="p-2 mx-auto min-w-screen-xl max-w-screen-2xl">

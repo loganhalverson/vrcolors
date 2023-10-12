@@ -13,7 +13,7 @@ export const MenuColoringPage = () => {
 			<HoverProvider>
 				<ToastContainer />
 				<DynamicBackground />
-				<Navbar currentPage={'Home'} colorFunctionality />
+				<Navbar colorFunctionality />
 				<Menu />
 			</HoverProvider>
 		</ThemeProvider>

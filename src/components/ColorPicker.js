@@ -7,7 +7,6 @@ import emitter from '../context/EventBus';
 export const ColorPicker = ({ option }) => {
 	const [background, setBackground] = useState('#fff');
 	const [pickerVisible, setPickerVisible] = useState(false);
-	const [mousePosition, setMousePosition] = useState({ x: null, y: null });
 
 	// Destructure theme from context
 	const { theme, setTheme } = useContext(ThemeContext);
@@ -84,13 +83,6 @@ export const ColorPicker = ({ option }) => {
 		});
 	};
 
-	// Destructures the mouseX and mouseY from the event.
-	const handleClick = ({ clientX, clientY }) => {
-		setPickerVisible(!pickerVisible);
-		console.log(clientX, clientY);
-		setMousePosition({ x: clientX, y: clientY });
-	};
-
 	const handleMouseEnter = () => {
 		emitter.emit(eventTag, true);
 	};
@@ -113,7 +105,7 @@ export const ColorPicker = ({ option }) => {
 		<div>
 			{/* Label that appears on hover and while color picker is open. */}
 			<button
-				onClick={handleClick}
+				onClick={() => setPickerVisible(!pickerVisible)}
 				className="w-8 h-8 rounded-full ring group transition hover:scale-105"
 				style={{ backgroundColor: background }}
 				onMouseEnter={handleMouseEnter}

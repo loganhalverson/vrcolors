@@ -1,11 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import { ImportButton, ExportButton } from './Buttons';
 import { ColorPicker } from './ColorPicker';
+import { Link, useLocation } from 'react-router-dom';
 
-export const Navbar = ({ currentPage, colorFunctionality }) => {
+export const Navbar = ({ colorFunctionality }) => {
 	const [onboarding, setOnboarding] = useState(false);
 
 	const keys = ['Highlight', 'Icons', 'Buttons', 'Background', 'Text', 'Subtext'];
+	let currentPage = useLocation().pathname;
 
 	const clearOnboarding = () => {
 		// Store value in local storage.
@@ -37,20 +39,20 @@ export const Navbar = ({ currentPage, colorFunctionality }) => {
 				{/* Links */}
 				<div className="block w-auto">
 					<ul className="flex flex-row items-center font-medium gap-x-8">
-						<li>
-							<a href="/" className={`hover:text-blue-400 ${currentPage === 'Home' ? 'text-blue-600' : 'text-white'}`}>
+						<li key="home">
+							<Link to=".." className={`hover:text-blue-400 ${currentPage === '/' ? 'text-blue-600' : 'text-white'}`}>
 								Home
-							</a>
+							</Link>
 						</li>
-						<li>
-							<a href="/about" className={`hover:text-blue-400 ${currentPage === 'About' ? 'text-blue-600' : 'text-white'}`}>
+						<li key="about">
+							<Link to="/about" className={`hover:text-blue-400 ${currentPage === '/about' ? 'text-blue-600' : 'text-white'}`}>
 								About
-							</a>
+							</Link>
 						</li>
-						<li>
-							<a href="/how-to" className={`hover:text-blue-400 ${currentPage === 'How To Use' ? 'text-blue-600' : 'text-white'}`}>
-								How to Use
-							</a>
+						<li key="how-to">
+							<Link to="/how-to" className={`hover:text-blue-400 ${currentPage === '/how-to' ? 'text-blue-600' : 'text-white'}`}>
+								How To Use
+							</Link>
 						</li>
 					</ul>
 				</div>

@@ -10,13 +10,12 @@ import { convertPaletteCodeToTheme } from '../utils/ImportExport';
 
 export const Menu = () => {
 	const { theme, setTheme } = useContext(ThemeContext);
-	const { hovered, setHovered, hoverState } = useContext(HoverContext);
+	const { hovered, hoverState } = useContext(HoverContext);
 
 	// Check the URL for a palette code.
 	// 10062023 - I'm debating on where this should take place. Menu.js is my best bet for now because it is the
 	// highest level component with access to ThemeContext that is neither context nor page.
 	const { paletteCode } = useParams();
-	const currentUrl = window.location.href;
 
 	useEffect(() => {
 		if (paletteCode) {
