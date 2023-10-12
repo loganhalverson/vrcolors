@@ -83,14 +83,6 @@ export const ColorPicker = ({ option }) => {
 		});
 	};
 
-	const handleMouseEnter = () => {
-		emitter.emit(eventTag, true);
-	};
-
-	const handleMouseLeave = () => {
-		emitter.emit(eventTag, false);
-	};
-
 	// Another possible bad practice.
 	// I want the color pickers to update when a palette code is imported.
 	// The primitive approach is to have them listen to theme, seeing if their current background
@@ -101,25 +93,28 @@ export const ColorPicker = ({ option }) => {
 		}
 	}, [theme[key]]);
 
+	/*
+		onClick(): Display / hide the color picker.
+		onMouseEnter(): Toggle on the hover state for all associated items.
+		onMouseLeave(): Toggle off the hover state for all associated items.
+	*/
 	return (
 		<div>
-			{/* Label that appears on hover and while color picker is open. */}
 			<button
 				onClick={() => setPickerVisible(!pickerVisible)}
 				className="w-8 h-8 rounded-full ring group transition hover:scale-105"
 				style={{ backgroundColor: background }}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}>
+				onMouseEnter={() => emitter.emit(eventTag, true)}
+				onMouseLeave={() => emitter.emit(eventTag, false)}>
+				{/* Label that appears on hover. */}
 				<span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-8 bg-gray-950 rounded-lg py-1 px-2 text-center text-gray-50 transition scale-0 group-hover:-translate-y-16 group-hover:scale-100">
 					{option}
 				</span>
 			</button>
 
-			{/* Display the color picker conditionally. */}
 			{pickerVisible ? (
 				<div className="relative">
 					<div className="absolute -translate-x-[40%]" style={{ top: 16, zIndex: 10 }}>
-						{/* <div className="absolute" style={{ left: mousePosition.x, top: mousePosition.y + 16, zIndex: 10 }}> */}
 						<OutsideAlerter callback={() => setPickerVisible(false)}>
 							<SketchPicker color={background} onChangeComplete={handleChangeComplete} />
 						</OutsideAlerter>
