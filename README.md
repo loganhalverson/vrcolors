@@ -3,11 +3,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
-  <h2 align="center">VRColors</h2>
+  <h1 align="center">VRColors</h1>
 
   <p align="center">
     A theme creation and sharing website for VRChat.
@@ -47,9 +44,7 @@
 ## About The Project
 
 <div align="center">
-  <video controls width="80%">
-    <source src="public/vrcolorsDemo.webm" type="video/webm"/>
-  </video>
+  <img src="public/vrcolorsDemo.gif" width="80%"/>
 </div>
 
 This website seeks to emulate the custom UI themes available to VRChat Plus users. It also serves as a way of sharing these themes, instead of prodding someone for a nondescript string of hex values.
