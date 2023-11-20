@@ -3,97 +3,105 @@ import { SketchPicker } from 'react-color';
 import OutsideAlerter from './OutsideAlerter';
 import { ThemeContext } from '../context/ThemeContext';
 import emitter from '../context/EventBus';
+import { useParams, useNavigate } from 'react-router-dom';
 
 export const ColorPicker = ({ option }) => {
 	const [background, setBackground] = useState('#fff');
 	const [pickerVisible, setPickerVisible] = useState(false);
-
-	// Destructure theme from context
 	const { theme, setTheme } = useContext(ThemeContext);
+	const { paletteCode } = useParams();
+	const navigate = useNavigate();
 
-	// Define the event to transmit when contacting EventBus.
-	const eventTag = useMemo(() => {
-		let innerTag = '';
+	/*
+		eventTag: The event emitted onMouseEnter for the hover effect.
+		key: The respective value of each color picker to theme, i.e highlight, buttons, icons.
+		urlIndex: The index of the value to update in the URL on color change.
+	*/
+	const { eventTag, key, urlIndex } = useMemo(() => {
+		let innerParams = { eventTag: null, key: null, urlIndex: null };
 		switch (option) {
 			case 'Highlight':
-				innerTag = 'HIGHLIGHT-HOVER';
+				innerParams.key = 'highlight';
+				innerParams.eventTag = 'HIGHLIGHT-HOVER';
+				innerParams.urlIndex = 0;
 				break;
 			case 'Icons':
-				innerTag = 'ICONS-HOVER';
+				innerParams.key = 'icons';
+				innerParams.eventTag = 'ICONS-HOVER';
+				innerParams.urlIndex = 1;
 				break;
 			case 'Buttons':
-				innerTag = 'BUTTONS-HOVER';
+				innerParams.key = 'buttons';
+				innerParams.eventTag = 'BUTTONS-HOVER';
+				innerParams.urlIndex = 2;
 				break;
 			case 'Background':
-				innerTag = 'BACKGROUND-HOVER';
+				innerParams.key = 'background';
+				innerParams.eventTag = 'BACKGROUND-HOVER';
+				innerParams.urlIndex = 3;
 				break;
 			case 'Text':
-				innerTag = 'TEXT-HOVER';
+				innerParams.key = 'text';
+				innerParams.eventTag = 'TEXT-HOVER';
+				innerParams.urlIndex = 4;
 				break;
 			case 'Subtext':
-				innerTag = 'SUBTEXT-HOVER';
+				innerParams.key = 'subtext';
+				innerParams.eventTag = 'SUBTEXT-HOVER';
+				innerParams.urlIndex = 5;
 				break;
 			default:
 				console.error('Invalid option provided to ColorPicker.');
-				return 'N/A';
-		}
-		return innerTag;
-	}, [option]);
-
-	// Define the key of theme to change when the color picker is used.
-	const key = useMemo(() => {
-		let innerKey = '';
-		switch (option) {
-			case 'Highlight':
-				innerKey = 'highlight';
 				break;
-			case 'Icons':
-				innerKey = 'icons';
-				break;
-			case 'Buttons':
-				innerKey = 'buttons';
-				break;
-			case 'Background':
-				innerKey = 'background';
-				break;
-			case 'Text':
-				innerKey = 'text';
-				break;
-			case 'Subtext':
-				innerKey = 'subtext';
-				break;
-			default:
-				innerKey = 'N/A';
-				console.error('Invalid option provided to ColorPicker.');
-				return '';
 		}
 
-		setBackground(theme[innerKey]);
-		return innerKey;
+		return innerParams;
 	}, [option]);
 
-	const handleChangeComplete = (color) => {
-		setBackground(color.hex);
-
-		setTheme((prevTheme) => {
-			return {
-				...prevTheme,
-				[key]: color.hex,
-			};
-		});
-	};
-
-	// Another possible bad practice.
-	// I want the color pickers to update when a palette code is imported.
-	// The primitive approach is to have them listen to theme, seeing if their current background
-	// is different than their respective key:value value.
+	// Refresh background when a palette code is imported.
 	useEffect(() => {
 		if (background !== theme[key]) {
 			setBackground(theme[key]);
 		}
 	}, [theme[key]]);
 
+	// Initialize background after useMemo() runs.
+	useEffect(() => {
+		setBackground(theme[key]);
+	}, [key]);
+
+	// Changes the hex value in the URL. Assumes a valid URL palette code.
+	const updateURL = (hex) => {
+		try {
+			const color = hex.slice(1).toUpperCase();
+			const newUrl = paletteCode
+				.split('-')
+				.map((val, index) => (index === urlIndex ? color : val))
+				.join('-');
+			navigate(`../${newUrl}`, { replace: true });
+		} catch (error) {
+			if (error instanceof TypeError) {
+				console.error(`${error.name}: ColorPicker did not find a valid palette code in the URL.`);
+			} else {
+				console.error(`${error.name}: ${error.message}`);
+			}
+		}
+	};
+
+	// Update background function.
+	const handleChangeComplete = (color) => {
+		setBackground(color.hex);
+		setTheme((prevTheme) => {
+			return {
+				...prevTheme,
+				[key]: color.hex,
+			};
+		});
+		updateURL(color.hex);
+	};
+
 	/*
+		--- Event Listeners ---
 		onClick(): Display / hide the color picker.
 		onMouseEnter(): Toggle on the hover state for all associated items.
 		onMouseLeave(): Toggle off the hover state for all associated items.
