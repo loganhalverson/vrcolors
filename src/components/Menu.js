@@ -7,6 +7,7 @@ import { FeatureItem } from './menu-components/FeatureItem';
 import { ShieldItem } from './menu-components/ShieldItem';
 import { generateShades } from '../utils/Color';
 import { convertPaletteCodeToTheme } from '../utils/ImportExport';
+import { Voice, Avatar, IconsAndEmojis, Audio, LightsAndParticles, Shaders, Animations } from './Icons';
 
 export const Menu = () => {
 	const { theme, setTheme } = useContext(ThemeContext);
@@ -101,13 +102,13 @@ export const Menu = () => {
 								<ul
 									className={`flex flex-row flex-wrap items-start justify-center h-full px-24 mb-4 font-semibold rounded-b-lg gap-x-6 `}
 									style={{ backgroundColor: theme.background700 }}>
-									<FeatureItem theme={theme} text="Voice" selected />
-									<FeatureItem theme={theme} text="Avatar" selected />
-									<FeatureItem theme={theme} text="User Icons & Emojis" selected />
-									<FeatureItem theme={theme} text="Audio" selected />
-									<FeatureItem theme={theme} text="Lights & Particles" />
-									<FeatureItem theme={theme} text="Shaders" selected />
-									<FeatureItem theme={theme} text="Custom Animations" />
+									<FeatureItem theme={theme} text="Voice" icon={Voice.path} viewbox={Voice.viewbox} selected />
+									<FeatureItem theme={theme} text="Avatar" icon={Avatar.path} viewbox={Avatar.viewbox} selected />
+									<FeatureItem theme={theme} text="User Icons & Emojis" icon={IconsAndEmojis.path} viewbox={IconsAndEmojis.viewbox} selected />
+									<FeatureItem theme={theme} text="Audio" icon={Audio.path} viewbox={Audio.viewbox} selected />
+									<FeatureItem theme={theme} text="Lights & Particles" icon={LightsAndParticles.path} viewbox={LightsAndParticles.viewbox} />
+									<FeatureItem theme={theme} text="Shaders" icon={Shaders.path} viewbox={Shaders.viewbox} selected />
+									<FeatureItem theme={theme} text="Custom Animations" icon={Animations.path} viewbox={Animations.viewbox} />
 								</ul>
 							</div>
 						</div>

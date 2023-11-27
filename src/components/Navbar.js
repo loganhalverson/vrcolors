@@ -39,21 +39,15 @@ export const Navbar = ({ colorFunctionality }) => {
 				{/* Links */}
 				<div className="block w-auto">
 					<ul className="flex flex-row items-center font-medium gap-x-8">
-						<li key="home">
-							<Link to=".." className={`hover:text-blue-400 ${currentPage === '/' ? 'text-blue-600' : 'text-white'}`}>
-								Home
-							</Link>
-						</li>
-						<li key="about">
-							<Link to="/about" className={`hover:text-blue-400 ${currentPage === '/about' ? 'text-blue-600' : 'text-white'}`}>
-								About
-							</Link>
-						</li>
-						<li key="how-to">
-							<Link to="/how-to" className={`hover:text-blue-400 ${currentPage === '/how-to' ? 'text-blue-600' : 'text-white'}`}>
-								How To Use
-							</Link>
-						</li>
+						<Link to=".." key="home" className={`hover:text-blue-400 ${currentPage === '/' ? 'text-blue-600' : 'text-white'}`}>
+							Home
+						</Link>
+						<Link to="/about" key="about" className={`hover:text-blue-400 ${currentPage === '/about' ? 'text-blue-600' : 'text-white'}`}>
+							About
+						</Link>
+						<Link to="/how-to" key="how-to" className={`hover:text-blue-400 ${currentPage === '/how-to' ? 'text-blue-600' : 'text-white'}`}>
+							How To Use
+						</Link>
 					</ul>
 				</div>
 			</div>
@@ -66,8 +60,8 @@ export const Navbar = ({ colorFunctionality }) => {
 							<div className="relative flex items-end justify-center w-full rounded-xl gap-x-6 p-2 px-4 bg-gray-900 z-[2]">
 								{keys.map((key, idx) => {
 									return (
-										<div onClick={() => clearOnboarding()}>
-											<ColorPicker option={key} key={idx} />
+										<div onClick={() => clearOnboarding()} key={idx}>
+											<ColorPicker option={key} />
 										</div>
 									);
 								})}
