@@ -71,14 +71,14 @@ export const ColorPicker = ({ option }) => {
 	}, [key]);
 
 	// Changes the hex value in the URL. Assumes a valid URL palette code.
-	const updateURL = (hex) => {
+	const updateHexInURL = (hex) => {
 		try {
 			const color = hex.slice(1).toUpperCase();
 			const newUrl = paletteCode
 				.split('-')
 				.map((val, index) => (index === urlIndex ? color : val))
 				.join('-');
-			navigate(`../${newUrl}`, { replace: true });
+			navigate(`../color/${newUrl}`, { replace: true });
 		} catch (error) {
 			if (error instanceof TypeError) {
 				console.error(`${error.name}: ColorPicker did not find a valid palette code in the URL.`);
@@ -97,7 +97,7 @@ export const ColorPicker = ({ option }) => {
 				[key]: color.hex,
 			};
 		});
-		updateURL(color.hex);
+		updateHexInURL(color.hex);
 	};
 
 	/*

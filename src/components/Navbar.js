@@ -26,7 +26,7 @@ export const Navbar = ({ colorFunctionality }) => {
 		<nav className="z-10 bg-white border-gray-200 dark:bg-gray-900">
 			<div className="flex flex-wrap items-center justify-between p-3 mx-auto max-w-screen-2xl">
 				{/* Brand */}
-				<a href="/" className="flex items-center">
+				<Link to="/" className="flex items-center">
 					<svg className="w-6 h-6 mr-2 text-white" viewBox="0 0 24 24">
 						<path
 							fill="currentColor"
@@ -34,13 +34,16 @@ export const Navbar = ({ colorFunctionality }) => {
 						/>
 					</svg>
 					<span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">VRColors</span>
-				</a>
+				</Link>
 
 				{/* Links */}
 				<div className="block w-auto">
 					<ul className="flex flex-row items-center font-medium gap-x-8">
-						<Link to=".." key="home" className={`hover:text-blue-400 ${currentPage === '/' ? 'text-blue-600' : 'text-white'}`}>
-							Home
+						<Link
+							to="/color/6BE4F9-2AABC1-0D3537-1B222C-BBBBBB-008489"
+							key="home"
+							className={`hover:text-blue-400 ${currentPage === '/' ? 'text-blue-600' : 'text-white'}`}>
+							Color
 						</Link>
 						<Link to="/about" key="about" className={`hover:text-blue-400 ${currentPage === '/about' ? 'text-blue-600' : 'text-white'}`}>
 							About
