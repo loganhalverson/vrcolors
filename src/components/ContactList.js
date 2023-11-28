@@ -35,7 +35,7 @@ export const ContactList = () => {
 						</svg>
 					</p>
 					<span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-12 bg-gray-950 rounded-lg py-1 px-2 text-center text-gray-50 transition scale-0 group-hover:-translate-y-[4.5rem] group-hover:scale-100">
-						@bogo
+						@biscuitbasket.
 					</span>
 				</div>
 
