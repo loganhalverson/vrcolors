@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 
 // Create a button that lets a user import a palette code.
 export const ImportButton = () => {
-	const { setTheme } = useContext(ThemeContext);
+	const { setTheme, updateTheme } = useContext(ThemeContext);
 
 	const handleClick = () => {
 		let paletteCode = window.prompt('Enter a palette code.', '#6be4f9,#2aabc1,#0d3537...');
@@ -21,16 +21,7 @@ export const ImportButton = () => {
 		} else {
 			const newTheme = convertPaletteCodeToTheme(paletteCode);
 			if (newTheme) {
-				setTheme(() => {
-					return {
-						highlight: newTheme.highlight,
-						icons: newTheme.icons,
-						buttons: newTheme.buttons,
-						background: newTheme.background,
-						text: newTheme.text,
-						subtext: newTheme.subtext,
-					};
-				});
+				updateTheme(newTheme);
 				generateShades('background', setTheme);
 			} else {
 				// Nothing returned, thus invalid code was provided.

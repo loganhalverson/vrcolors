@@ -13,29 +13,6 @@ export const Menu = () => {
 	const { theme, setTheme } = useContext(ThemeContext);
 	const { hovered, hoverState } = useContext(HoverContext);
 
-	// Check the URL for a palette code.
-	// 10062023 - I'm debating on where this should take place. Menu.js is my best bet for now because it is the
-	// highest level component with access to ThemeContext that is neither context nor page.
-	const { paletteCode } = useParams();
-
-	useEffect(() => {
-		if (paletteCode) {
-			// validate code...
-			const newTheme = convertPaletteCodeToTheme(paletteCode);
-			setTheme(() => {
-				return {
-					highlight: newTheme.highlight,
-					icons: newTheme.icons,
-					buttons: newTheme.buttons,
-					background: newTheme.background,
-					text: newTheme.text,
-					subtext: newTheme.subtext,
-				};
-			});
-			generateShades('background', setTheme);
-		}
-	}, []);
-
 	// On background change, generate shades.
 	useEffect(() => {
 		generateShades('background', setTheme);

@@ -1,16 +1,19 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { ImportButton, ExportButton } from './Buttons';
 import { ColorPicker } from './ColorPicker';
 import { Link, useLocation } from 'react-router-dom';
 
-export const Navbar = ({ colorFunctionality }) => {
+export const Navbar = ({ colorFunctionality, offset = 0 }) => {
+	// If the overlay directing users attention to the color pickers on first visit is visible.
 	const [onboarding, setOnboarding] = useState(false);
 
+	// The theme's keys used in creating the ColorPicker objects.
 	const keys = ['Highlight', 'Icons', 'Buttons', 'Background', 'Text', 'Subtext'];
-	let currentPage = useLocation().pathname;
+
+	// Current page. ex: about, color, how-to
+	let currentPage = useLocation().pathname.split('/')[1];
 
 	const clearOnboarding = () => {
-		// Store value in local storage.
 		localStorage.setItem('isFirstVisit', false);
 		setOnboarding(false);
 	};
@@ -24,9 +27,9 @@ export const Navbar = ({ colorFunctionality }) => {
 
 	return (
 		<nav className="z-10 bg-white border-gray-200 dark:bg-gray-900">
-			<div className="flex flex-wrap items-center justify-between p-3 mx-auto max-w-screen-2xl">
+			<div className={`flex flex-wrap items-center justify-between p-3 mx-auto max-w-screen-2xl`}>
 				{/* Brand */}
-				<Link to="/" className="flex items-center">
+				<Link to="../color/6BE4F9-2AABC1-0D3537-1B222C-BBBBBB-008489" className="flex items-center">
 					<svg className="w-6 h-6 mr-2 text-white" viewBox="0 0 24 24">
 						<path
 							fill="currentColor"
@@ -42,13 +45,13 @@ export const Navbar = ({ colorFunctionality }) => {
 						<Link
 							to="/color/6BE4F9-2AABC1-0D3537-1B222C-BBBBBB-008489"
 							key="home"
-							className={`hover:text-blue-400 ${currentPage === '/' ? 'text-blue-600' : 'text-white'}`}>
+							className={`hover:text-blue-400 ${currentPage === 'color' ? 'text-blue-600' : 'text-white'}`}>
 							Color
 						</Link>
-						<Link to="/about" key="about" className={`hover:text-blue-400 ${currentPage === '/about' ? 'text-blue-600' : 'text-white'}`}>
+						<Link to="/about" key="about" className={`hover:text-blue-400 ${currentPage === 'about' ? 'text-blue-600' : 'text-white'}`}>
 							About
 						</Link>
-						<Link to="/how-to" key="how-to" className={`hover:text-blue-400 ${currentPage === '/how-to' ? 'text-blue-600' : 'text-white'}`}>
+						<Link to="/how-to" key="how-to" className={`hover:text-blue-400 ${currentPage === 'how-to' ? 'text-blue-600' : 'text-white'}`}>
 							How To Use
 						</Link>
 					</ul>

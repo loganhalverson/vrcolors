@@ -6,12 +6,14 @@ import { HoverProvider } from '../context/HoverContext';
 import { DynamicBackground } from '../components/DynamicBackground';
 import { Menu } from '../components/Menu';
 import { Navbar } from '../components/Navbar';
+import { URLThemeParser } from '../utils/URLThemeParser';
 
 export const MenuColoringPage = () => {
 	return (
 		<ThemeProvider>
 			<HoverProvider>
 				<ToastContainer />
+				<URLThemeParser/>
 				<DynamicBackground />
 				<Navbar colorFunctionality />
 				<Menu />
