@@ -9,7 +9,7 @@ export const URLThemeParser = () => {
 	const { paletteCode } = useParams();
 	const { setTheme, updateTheme } = useContext(ThemeContext);
 	const navigate = useNavigate();
-	const toastSettings = {
+	const toastStyleError = {
 		position: 'top-center',
 		autoClose: 3000,
 		hideProgressBar: true,
@@ -30,12 +30,12 @@ export const URLThemeParser = () => {
 			} catch (error) {
 				switch (error.message) {
 					case 'InvalidPalette':
-						toast.error(`${error.name}: An invalid palette code was provided in the URL.`, toastSettings);
+						toast.error(`${error.name}: An invalid palette code was provided in the URL.`, toastStyleError);
 						console.error(error.message);
 						break;
 					default:
+						toast.error(`${error.name}: An unexpected error has occured.`, toastStyleError);
 						console.error(error.message);
-						toast.error(`${error.name}: An unexpected error has occured.`, toastSettings);
 						break;
 				}
 				// Reset URL to default after catching the error.

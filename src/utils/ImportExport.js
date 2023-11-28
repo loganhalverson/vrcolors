@@ -5,6 +5,28 @@
 	URL-DEFAULT: 6BE4F9-2AABC1-0D3537-1B222C-BBBBBB-008489
 */
 
+export const convertURLToPaletteCode = (input) => {
+	const cleanedInput = input.replace(/[^a-fA-F0-9]/g, '');
+	if (cleanedInput.length !== 36) {
+		console.error('Invalid palette code provided to convertURLToPaletteCode.');
+		throw new Error('InvalidPalette');
+	}
+
+	const hexChunks = cleanedInput.match(/.{1,6}/g);
+	if (!hexChunks) {
+		console.error('Invalid palette code provided to convertPaletteCodeToTheme().');
+		throw new Error('InvalidPalette');
+	}
+
+	let res = '';
+	hexChunks.forEach((chunk, index) => {
+		if (index === 5) res += `#${chunk}`;
+		else res += `#${chunk},`;
+	});
+
+	return res;
+};
+
 // Returns a theme object created from the input palette code.
 // EX: '{'highlight': '#aaa', 'icons': '#bbb', ...}
 export const convertPaletteCodeToTheme = (input) => {

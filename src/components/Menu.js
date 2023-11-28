@@ -1,12 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeContext';
 import { HoverContext } from '../context/HoverContext';
 import { BottomTab } from './menu-components/BottomTab';
 import { FeatureItem } from './menu-components/FeatureItem';
 import { ShieldItem } from './menu-components/ShieldItem';
 import { generateShades } from '../utils/Color';
-import { convertPaletteCodeToTheme } from '../utils/ImportExport';
 import { Voice, Avatar, IconsAndEmojis, Audio, LightsAndParticles, Shaders, Animations } from './Icons';
 
 export const Menu = () => {
