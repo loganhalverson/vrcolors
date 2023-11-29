@@ -9,12 +9,12 @@ export const DynamicBackground = () => {
 	useEffect(() => {
 		setStyle({
 			...style,
-			background: `linear-gradient(to right top, ${shadeHexColor(theme.background, -0.8)}, 60%, ${shadeHexColor(theme.background, -0.4)}, 85%, ${shadeHexColor(
+			background: `linear-gradient(to right top, ${shadeHexColor(theme.background, -0.8)}, 60%, ${shadeHexColor(
 				theme.background,
-				-0.8
-			)})`,
+				-0.4
+			)}, 85%, ${shadeHexColor(theme.background, -0.8)})`,
 		});
 	}, [theme.background]);
 
-	return <div className="fixed z-[-1] w-full filter saturate-[80%] min-h-screen" style={style} />;
+	return <div className="fixed z-[-1] min-h-screen w-full saturate-[80%] filter" style={style} />;
 };

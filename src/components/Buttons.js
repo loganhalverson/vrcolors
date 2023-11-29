@@ -37,7 +37,10 @@ export const ImportButton = () => {
 			} catch (error) {
 				switch (error.message) {
 					case 'InvalidPalette':
-						toast.error(`${error.name}: Invalid palette code provided. A valid code will look like '#F4EBD0,#B68D40...'`, toastStyleError);
+						toast.error(
+							`${error.name}: Invalid palette code provided. A valid code will look like '#F4EBD0,#B68D40...'`,
+							toastStyleError
+						);
 						console.error(error.message);
 						break;
 					default:
@@ -52,7 +55,8 @@ export const ImportButton = () => {
 	return (
 		<button
 			onClick={handleClick}
-			className="px-6 py-2 transition duration-300 ease-in-out border border-blue-500 hover:bg-blue-600 rounded-md text-neutral-100 delay-50 filter hover:saturate-150 drop-shadow-sm hover:drop-shadow-lg">
+			className="delay-50 rounded-md border border-blue-500 px-6 py-2 text-neutral-100 drop-shadow-sm filter transition duration-300 ease-in-out hover:bg-blue-600 hover:drop-shadow-lg hover:saturate-150"
+		>
 			Import
 		</button>
 	);
@@ -64,7 +68,8 @@ export const ExportButton = () => {
 		<div>
 			<button
 				onClick={() => emitter.emit('EXPORT-EVENT', true)}
-				className="px-6 py-2 transition duration-300 ease-in-out border border-emerald-500 hover:bg-emerald-600 rounded-md text-neutral-100 delay-50 filter hover:saturate-150 drop-shadow-sm hover:drop-shadow-lg ">
+				className="delay-50 rounded-md border border-emerald-500 px-6 py-2 text-neutral-100 drop-shadow-sm filter transition duration-300 ease-in-out hover:bg-emerald-600 hover:drop-shadow-lg hover:saturate-150 "
+			>
 				Export
 			</button>
 		</div>

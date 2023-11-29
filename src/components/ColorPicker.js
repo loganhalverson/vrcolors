@@ -110,12 +110,13 @@ export const ColorPicker = ({ option }) => {
 		<div>
 			<button
 				onClick={() => setPickerVisible(!pickerVisible)}
-				className="w-8 h-8 rounded-full ring group transition hover:scale-105"
+				className="group h-8 w-8 rounded-full ring transition hover:scale-105"
 				style={{ backgroundColor: background }}
 				onMouseEnter={() => emitter.emit(eventTag, true)}
-				onMouseLeave={() => emitter.emit(eventTag, false)}>
+				onMouseLeave={() => emitter.emit(eventTag, false)}
+			>
 				{/* Label that appears on hover. */}
-				<span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-8 bg-gray-950 rounded-lg py-1 px-2 text-center text-gray-50 transition scale-0 group-hover:-translate-y-16 group-hover:scale-100">
+				<span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-8 scale-0 rounded-lg bg-gray-950 px-2 py-1 text-center text-gray-50 transition group-hover:-translate-y-16 group-hover:scale-100">
 					{option}
 				</span>
 			</button>

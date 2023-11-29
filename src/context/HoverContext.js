@@ -7,7 +7,14 @@ const HoverContext = createContext();
 // Create context provider
 const HoverProvider = ({ children }) => {
 	// Create theme with default values
-	const [hovered, setHovered] = useState({ highlight: false, icons: false, background: false, buttons: false, text: false, subtext: false });
+	const [hovered, setHovered] = useState({
+		highlight: false,
+		icons: false,
+		background: false,
+		buttons: false,
+		text: false,
+		subtext: false,
+	});
 
 	// Set up event listeners using useEffect
 	useEffect(() => {

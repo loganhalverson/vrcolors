@@ -14,7 +14,15 @@ export const shadeHexColor = (color, percent) => {
 		G = (f >> 8) & 0x00ff,
 		B = f & 0x0000ff;
 	return (
-		'#' + (0x1000000 + (Math.round((t - R) * p) + R) * 0x10000 + (Math.round((t - G) * p) + G) * 0x100 + (Math.round((t - B) * p) + B)).toString(16).slice(1)
+		'#' +
+		(
+			0x1000000 +
+			(Math.round((t - R) * p) + R) * 0x10000 +
+			(Math.round((t - G) * p) + G) * 0x100 +
+			(Math.round((t - B) * p) + B)
+		)
+			.toString(16)
+			.slice(1)
 	);
 };
 
@@ -30,7 +38,14 @@ export const blendHexColors = (c0, c1, p) => {
 		B2 = t & 0x0000ff;
 	return (
 		'#' +
-		(0x1000000 + (Math.round((R2 - R1) * p) + R1) * 0x10000 + (Math.round((G2 - G1) * p) + G1) * 0x100 + (Math.round((B2 - B1) * p) + B1)).toString(16).slice(1)
+		(
+			0x1000000 +
+			(Math.round((R2 - R1) * p) + R1) * 0x10000 +
+			(Math.round((G2 - G1) * p) + G1) * 0x100 +
+			(Math.round((B2 - B1) * p) + B1)
+		)
+			.toString(16)
+			.slice(1)
 	);
 };
 
@@ -47,7 +62,7 @@ const hexToRgb = (hex) => {
 		? {
 				r: parseInt(result[1], 16),
 				g: parseInt(result[2], 16),
-				b: parseInt(result[3], 16),
+				b: parseInt(result[3], 16)
 		  }
 		: null;
 };
@@ -60,7 +75,11 @@ const RGBToHSL = ({ r, g, b }) => {
 	const l = Math.max(r, g, b);
 	const s = l - Math.min(r, g, b);
 	const h = s ? (l === r ? (g - b) / s : l === g ? 2 + (b - r) / s : 4 + (r - g) / s) : 0;
-	return [60 * h < 0 ? 60 * h + 360 : 60 * h, 100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0), (100 * (2 * l - s)) / 2];
+	return [
+		60 * h < 0 ? 60 * h + 360 : 60 * h,
+		100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0),
+		(100 * (2 * l - s)) / 2
+	];
 };
 
 // Given a HEX color, return true if its HSL light value is greater than LIGHT_THRESHOLD.
@@ -82,7 +101,7 @@ export const generateShades = (key, setTheme) => {
 			[`${key}400`]: `${shadeHexColor(prevTheme[`${key}`], 0.05)}`,
 			[`${key}300`]: `${shadeHexColor(prevTheme[`${key}`], 0.1)}`,
 			[`${key}200`]: `${shadeHexColor(prevTheme[`${key}`], 0.15)}`,
-			[`${key}100`]: `${shadeHexColor(prevTheme[`${key}`], 0.2)}`,
+			[`${key}100`]: `${shadeHexColor(prevTheme[`${key}`], 0.2)}`
 		};
 	});
 };
