@@ -3,7 +3,7 @@ import { HoverContext } from '../../context/HoverContext';
 import Switch from 'react-switch';
 import { shadeHexColor } from '../../utils/Color';
 
-export const FeatureItem = ({ theme, text, icon, viewbox = '0 0 24 24', selected = false }) => {
+export const FeatureItem = ({ theme, text, icon, viewbox, selected = false }) => {
 	const { hovered, setHovered, hoverState } = useContext(HoverContext);
 	const [checked, setChecked] = useState(selected);
 	const [enabled, setEnabled] = useState(selected);

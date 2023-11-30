@@ -5,7 +5,13 @@ import { BottomTab } from './menu-components/BottomTab';
 import { FeatureItem } from './menu-components/FeatureItem';
 import { ShieldItem } from './menu-components/ShieldItem';
 import { generateShades } from '../utils/Color';
+
+// FeatureItem Icons
 import { Voice, Avatar, IconsAndEmojis, Audio, LightsAndParticles, Shaders, Animations } from './Icons';
+// BottomTab Icons
+import { Rocket, Bell, Planet, Group, Network, Cog, Search, Plus, Question, VBucksLol } from './Icons';
+// ShieldItem Icons
+import { MaximumShield, DefaultShield, NoneShield, CustomShield } from './Icons';
 
 export const Menu = () => {
 	const { theme, setTheme } = useContext(ThemeContext);
@@ -53,10 +59,31 @@ export const Menu = () => {
 							<div className="flex h-full flex-col">
 								{/* Shield Levels */}
 								<ul className="flex flex-row justify-between gap-x-4">
-									<ShieldItem theme={theme} text={'Maximum'} />
-									<ShieldItem theme={theme} text={'Normal'} />
-									<ShieldItem theme={theme} text={'None'} />
-									<ShieldItem theme={theme} text={'Custom'} selected />
+									<ShieldItem
+										theme={theme}
+										icon={MaximumShield.path}
+										viewbox={MaximumShield.viewbox}
+										text={'Maximum'}
+									/>
+									<ShieldItem
+										theme={theme}
+										icon={DefaultShield.path}
+										viewbox={DefaultShield.viewbox}
+										text={'Normal'}
+									/>
+									<ShieldItem
+										theme={theme}
+										icon={NoneShield.path}
+										viewbox={NoneShield.viewbox}
+										text={'None'}
+									/>
+									<ShieldItem
+										theme={theme}
+										icon={CustomShield.path}
+										viewbox={CustomShield.viewbox}
+										text={'Custom'}
+										selected
+									/>
 								</ul>
 
 								{/* Info Text */}
@@ -149,18 +176,24 @@ export const Menu = () => {
 					</div>
 					<div id="bottom" className="w-full">
 						<ul className="flex justify-center">
-							<BottomTab theme={theme} />
-							<BottomTab theme={theme} />
-							<BottomTab theme={theme} />
-							<BottomTab theme={theme} />
-							<BottomTab theme={theme} />
-							<BottomTab theme={theme} />
-							<BottomTab theme={theme} />
-							<BottomTab theme={theme} selected />
-							<BottomTab theme={theme} />
-							<BottomTab theme={theme} />
-							<BottomTab theme={theme} />
-							<BottomTab theme={theme} />
+							<BottomTab theme={theme} icon={Rocket.path} viewbox={Rocket.viewbox} />
+							<BottomTab theme={theme} icon={Bell.path} viewbox={Bell.viewbox} />
+							<BottomTab theme={theme} icon={IconsAndEmojis.path} viewbox={IconsAndEmojis.viewbox} />
+							<BottomTab theme={theme} icon={Planet.path} viewbox={Planet.viewbox} />
+							<BottomTab theme={theme} icon={Avatar.path} viewbox={Avatar.viewbox} />
+							<BottomTab theme={theme} icon={Group.path} viewbox={Group.viewbox} />
+							<BottomTab theme={theme} icon={Network.path} viewbox={Network.viewbox} />
+							<BottomTab
+								theme={theme}
+								icon={DefaultShield.path}
+								viewbox={DefaultShield.viewbox}
+								selected
+							/>
+							<BottomTab theme={theme} icon={Cog.path} viewbox={Cog.viewbox} />
+							<BottomTab theme={theme} icon={Search.path} viewbox={Search.viewbox} />
+							<BottomTab theme={theme} icon={Plus.path} viewbox={Plus.viewbox} />
+							<BottomTab theme={theme} icon={Question.path} viewbox={Question.viewbox} />
+							<BottomTab theme={theme} icon={VBucksLol.path} viewbox={VBucksLol.viewbox} />
 						</ul>
 					</div>
 				</div>
