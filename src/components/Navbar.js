@@ -29,8 +29,8 @@ export const Navbar = ({ colorFunctionality, offset = 0 }) => {
 		<nav className="z-10 border-gray-200 bg-white dark:bg-gray-900">
 			<div className={`mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between p-3`}>
 				{/* Brand */}
-				<Link to="../color/6BE4F9-2AABC1-0D3537-1B222C-BBBBBB-008489" className="flex items-center">
-					<svg className="mr-2 h-6 w-6 text-white" viewBox="0 0 24 24">
+				<Link to="../" className="flex items-center">
+					<svg className="mr-3 h-6 w-6 text-sky-400" viewBox="0 0 24 24">
 						<path
 							fill="currentColor"
 							d="m19.228 18.732l1.767-1.768l1.768 1.768a2.5 2.5 0 1 1-3.535 0ZM8.878 1.08l11.314 11.313a1 1 0 0 1 0 1.414l-8.485 8.486a1 1 0 0 1-1.414 0l-8.485-8.486a1 1 0 0 1 0-1.414l7.778-7.778l-2.122-2.121L8.88 1.08ZM11 6.03L3.929 13.1H18.07L11 6.03Z"

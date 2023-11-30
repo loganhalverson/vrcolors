@@ -55,7 +55,7 @@ export const ImportButton = () => {
 	return (
 		<button
 			onClick={handleClick}
-			className="delay-50 rounded-md border border-blue-500 px-6 py-2 text-neutral-100 drop-shadow-sm filter transition duration-300 ease-in-out hover:bg-blue-600 hover:drop-shadow-lg hover:saturate-150"
+			className="delay-50 rounded-md bg-blue-600 px-6 py-2 text-neutral-100 shadow-sm shadow-blue-900 ring-blue-800 filter transition duration-200 hover:ring  hover:saturate-150 focus:ring-2"
 		>
 			Import
 		</button>
@@ -68,7 +68,7 @@ export const ExportButton = () => {
 		<div>
 			<button
 				onClick={() => emitter.emit('EXPORT-EVENT', true)}
-				className="delay-50 rounded-md border border-emerald-500 px-6 py-2 text-neutral-100 drop-shadow-sm filter transition duration-300 ease-in-out hover:bg-emerald-600 hover:drop-shadow-lg hover:saturate-150 "
+				className="delay-50 rounded-md bg-emerald-600 px-6 py-2 text-neutral-100 shadow-sm shadow-green-900 ring-emerald-800 filter transition duration-200 hover:ring hover:saturate-150 focus:ring-2"
 			>
 				Export
 			</button>
