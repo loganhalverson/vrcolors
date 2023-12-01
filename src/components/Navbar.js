@@ -1,16 +1,19 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { ImportButton, ExportButton } from './Buttons';
 import { ColorPicker } from './ColorPicker';
 import { Link, useLocation } from 'react-router-dom';
 
-export const Navbar = ({ colorFunctionality }) => {
+export const Navbar = ({ colorFunctionality, offset = 0 }) => {
+	// If the overlay directing users attention to the color pickers on first visit is visible.
 	const [onboarding, setOnboarding] = useState(false);
 
+	// The theme's keys used in creating the ColorPicker objects.
 	const keys = ['Highlight', 'Icons', 'Buttons', 'Background', 'Text', 'Subtext'];
-	let currentPage = useLocation().pathname;
+
+	// Current page. ex: about, color, how-to
+	let currentPage = useLocation().pathname.split('/')[1];
 
 	const clearOnboarding = () => {
-		// Store value in local storage.
 		localStorage.setItem('isFirstVisit', false);
 		setOnboarding(false);
 	};
@@ -23,51 +26,67 @@ export const Navbar = ({ colorFunctionality }) => {
 	}, [onboarding]);
 
 	return (
-		<nav className="z-10 bg-white border-gray-200 dark:bg-gray-900">
-			<div className="flex flex-wrap items-center justify-between p-3 mx-auto max-w-screen-2xl">
+		<nav className="z-10 border-gray-200 bg-white dark:bg-gray-900">
+			<div className={`mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between p-3`}>
 				{/* Brand */}
-				<a href="/" className="flex items-center">
-					<svg className="w-6 h-6 mr-2 text-white" viewBox="0 0 24 24">
+				<Link to="../" className="flex items-center">
+					<svg className="mr-3 h-6 w-6 text-sky-400" viewBox="0 0 24 24">
 						<path
 							fill="currentColor"
 							d="m19.228 18.732l1.767-1.768l1.768 1.768a2.5 2.5 0 1 1-3.535 0ZM8.878 1.08l11.314 11.313a1 1 0 0 1 0 1.414l-8.485 8.486a1 1 0 0 1-1.414 0l-8.485-8.486a1 1 0 0 1 0-1.414l7.778-7.778l-2.122-2.121L8.88 1.08ZM11 6.03L3.929 13.1H18.07L11 6.03Z"
 						/>
 					</svg>
-					<span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">VRColors</span>
-				</a>
+					<span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
+						VRColors
+					</span>
+				</Link>
 
 				{/* Links */}
 				<div className="block w-auto">
-					<ul className="flex flex-row items-center font-medium gap-x-8">
-						<li key="home">
-							<Link to=".." className={`hover:text-blue-400 ${currentPage === '/' ? 'text-blue-600' : 'text-white'}`}>
-								Home
-							</Link>
-						</li>
-						<li key="about">
-							<Link to="/about" className={`hover:text-blue-400 ${currentPage === '/about' ? 'text-blue-600' : 'text-white'}`}>
-								About
-							</Link>
-						</li>
-						<li key="how-to">
-							<Link to="/how-to" className={`hover:text-blue-400 ${currentPage === '/how-to' ? 'text-blue-600' : 'text-white'}`}>
-								How To Use
-							</Link>
-						</li>
+					<ul className="flex flex-row items-center gap-x-8 font-medium">
+						<Link
+							to="/color/6BE4F9-2AABC1-0D3537-1B222C-BBBBBB-008489"
+							key="home"
+							className={`hover:text-blue-400 ${
+								currentPage === 'color' ? 'text-blue-600' : 'text-white'
+							}`}
+						>
+							Color
+						</Link>
+						<Link
+							to="/about"
+							key="about"
+							className={`hover:text-blue-400 ${
+								currentPage === 'about' ? 'text-blue-600' : 'text-white'
+							}`}
+						>
+							About
+						</Link>
+						<Link
+							to="/how-to"
+							key="how-to"
+							className={`hover:text-blue-400 ${
+								currentPage === 'how-to' ? 'text-blue-600' : 'text-white'
+							}`}
+						>
+							How To Use
+						</Link>
 					</ul>
 				</div>
 			</div>
 
 			{colorFunctionality && (
-				<div className="mx-auto border-t border-gray-700 max-w-screen-2xl">
-					<ul className="flex flex-col items-center justify-between flex-1 px-3 py-2 font-medium gap-y-4 md:gap-y-0 md:flex-row gap-x-8">
-						<div className="w-full md:text-xl text-center text-gray-600 md:text-left md:w-1/3">Click the circles to change the menu colors.</div>
-						<div className="px-4 relative z-[1]">
-							<div className="relative flex items-end justify-center w-full rounded-xl gap-x-6 p-2 px-4 bg-gray-900 z-[2]">
+				<div className="mx-auto max-w-screen-2xl border-t border-gray-700">
+					<ul className="flex flex-1 flex-col items-center justify-between gap-x-8 gap-y-4 px-3 py-2 font-medium md:flex-row md:gap-y-0">
+						<div className="w-full text-center text-gray-600 md:w-1/3 md:text-left md:text-xl">
+							Click the circles to change the menu colors.
+						</div>
+						<div className="relative z-[1] px-4">
+							<div className="relative z-[2] flex w-full items-end justify-center gap-x-6 rounded-xl bg-gray-900 p-2 px-4">
 								{keys.map((key, idx) => {
 									return (
-										<div onClick={() => clearOnboarding()}>
-											<ColorPicker option={key} key={idx} />
+										<div onClick={() => clearOnboarding()} key={idx}>
+											<ColorPicker option={key} />
 										</div>
 									);
 								})}
@@ -77,24 +96,30 @@ export const Navbar = ({ colorFunctionality }) => {
 							{onboarding && (
 								<>
 									{/* Hide onBoarding if the user clicks anywhere. */}
-									<div onClick={() => clearOnboarding()} className="fixed min-h-screen min-w-full z-[3]" />
-									<div className="absolute -inset-2 animate-pulse bg-gradient-to-br from-pink-600 to-blue-600 rounded-lg blur-lg z-[1]" />
-									<div className="fixed text-white top-0 left-0 min-h-screen bg-neutral-950 opacity-95 min-w-full">
+									<div
+										onClick={() => clearOnboarding()}
+										className="fixed z-[3] min-h-screen min-w-full"
+									/>
+									<div className="absolute -inset-2 z-[1] animate-pulse rounded-lg bg-gradient-to-br from-pink-600 to-blue-600 blur-lg" />
+									<div className="fixed left-0 top-0 min-h-screen min-w-full bg-neutral-950 text-white opacity-95">
 										<button
 											onClick={() => clearOnboarding()}
-											className="p-4 rounded-full m-4 my-2 w-8 h-8 flex justify-center items-center text-white text-3xl">
+											className="m-4 my-2 flex h-8 w-8 items-center justify-center rounded-full p-4 text-3xl text-white"
+										>
 											x
 										</button>
 									</div>
-									<span className="absolute left-1/2 -translate-x-1/2 mt-4 text-white font-semibold text-center w-3/4 text-xl">
+									<span className="absolute left-1/2 mt-4 w-3/4 -translate-x-1/2 text-center text-xl font-semibold text-white">
 										Click on the circles to{' '}
-										<span className="bg-gradient-to-br bg-clip-text text-transparent from-pink-600 to-blue-700 filter brightness-200">change the colors</span>{' '}
+										<span className="bg-gradient-to-br from-pink-600 to-blue-700 bg-clip-text text-transparent brightness-200 filter">
+											change the colors
+										</span>{' '}
 										of the menu below.
 									</span>
 								</>
 							)}
 						</div>
-						<div className="flex items-center justify-center w-full md:justify-end md:w-1/3 gap-x-4">
+						<div className="flex w-full items-center justify-center gap-x-4 md:w-1/3 md:justify-end">
 							<ImportButton />
 							<ExportButton />
 						</div>

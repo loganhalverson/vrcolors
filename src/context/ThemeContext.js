@@ -15,10 +15,24 @@ const ThemeProvider = ({ children }) => {
 		subtext: '#008489',
 	});
 
+	const updateTheme = (newTheme) => {
+		setTheme(() => {
+			return {
+				highlight: newTheme.highlight,
+				icons: newTheme.icons,
+				buttons: newTheme.buttons,
+				background: newTheme.background,
+				text: newTheme.text,
+				subtext: newTheme.subtext,
+			};
+		});
+	};
+
 	// Provide the state and functions to child components
 	const contextValue = {
 		theme,
 		setTheme,
+		updateTheme,
 	};
 
 	return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;

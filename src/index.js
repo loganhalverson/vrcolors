@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider, redirect, Navigate, useNavigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { LandingPage } from './pages/LandingPage';
 import { MenuColoringPage } from './pages/MenuColoringPage';
 import { AboutPage } from './pages/AboutPage';
 import { NotFoundPage } from './pages/NotFoundPage';
@@ -9,10 +10,19 @@ import './styles/index.css';
 
 const router = createBrowserRouter([
 	{
-		path: '/:paletteCode?',
-		element: <MenuColoringPage />,
+		path: '/',
+		element: <LandingPage />,
 		errorElement: <NotFoundPage />,
 	},
+	{
+		path: '/color/:paletteCode?',
+		element: <MenuColoringPage />,
+		loader: async () => {
+			return localStorage.getItem('paletteCode');
+		},
+		errorElement: <NotFoundPage />,
+	},
+
 	{
 		path: '/about',
 		element: <AboutPage />,
