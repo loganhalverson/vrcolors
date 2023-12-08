@@ -56,7 +56,7 @@ export const ColorPicker = ({ option }) => {
 		}
 
 		return innerParams;
-	}, [option]);
+	}, []);
 
 	// Refresh background when a palette code is imported.
 	useEffect(() => {
@@ -64,11 +64,6 @@ export const ColorPicker = ({ option }) => {
 			setBackground(theme[key]);
 		}
 	}, [theme[key]]);
-
-	// Initialize background after useMemo() runs.
-	useEffect(() => {
-		setBackground(theme[key]);
-	}, [key]);
 
 	// Changes the hex value in the URL. Assumes a valid URL palette code.
 	const updateHexInURL = (hex) => {

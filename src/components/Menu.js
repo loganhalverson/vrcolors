@@ -27,13 +27,13 @@ export const Menu = () => {
 			<div className="flex h-[48rem] flex-row ">
 				<div
 					id="l-wing"
-					className={`h-[90%] -scale-x-100 self-center rounded-r-md p-3 text-center transition
+					className={`h-[90%] self-center rounded-l-md p-3 text-center transition
 					${hovered.buttons ? hoverState : ''}
 					`}
 					style={{ backgroundColor: theme.buttons, color: theme.icons }}
 				>
 					<svg
-						className={`w-8 transition ${hovered.icons ? hoverState : ''}`}
+						className={`w-8 -scale-x-100 transition ${hovered.icons ? hoverState : ''}`}
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 512 512"
 					>

@@ -1,24 +1,28 @@
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import { ThemeProvider } from '../context/ThemeContext';
 import { HoverProvider } from '../context/HoverContext';
-import { DynamicBackground } from '../components/DynamicBackground';
-import { Menu } from '../components/Menu';
-import { Navbar } from '../components/Navbar';
+
+import { ExportPanelContainer } from '../components/ExportPanelContainer';
+import { ToastContainer } from 'react-toastify';
+import { ThumbnailBuilder } from '../components/thumbnail/ThumbnailBuilder';
 import { URLThemeParser } from '../utils/URLThemeParser';
-import { ExportPanel } from '../components/ExportPanel';
+import { DynamicBackground } from '../components/DynamicBackground';
+import { Navbar } from '../components/Navbar';
+import { Menu } from '../components/Menu';
 
 export const MenuColoringPage = () => {
 	return (
 		<ThemeProvider>
 			<HoverProvider>
-				<ExportPanel />
+				<ExportPanelContainer />
 				<ToastContainer />
 				<URLThemeParser />
 				<DynamicBackground />
 				<Navbar colorFunctionality />
 				<Menu />
+				<ThumbnailBuilder />
 			</HoverProvider>
 		</ThemeProvider>
 	);

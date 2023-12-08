@@ -16,5 +16,5 @@ export const DynamicBackground = () => {
 		});
 	}, [theme.background]);
 
-	return <div className="fixed z-[-1] min-h-screen w-full saturate-[80%] filter" style={style} />;
+	return <div className="fixed -z-10 min-h-screen w-full saturate-[80%] filter" style={style} />;
 };

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { convertURLToPaletteCode } from '../utils/ImportExport';
 import { useParams } from 'react-router-dom';
 
-export const ExportPanel = () => {
+export const ExportPanelContainer = () => {
 	const [visible, setVisible] = useState(false);
 	const { paletteCode } = useParams();
 
@@ -45,6 +45,7 @@ export const ExportPanel = () => {
 
 	const exportPalette = async () => {
 		try {
+			console.log('Going into convertURLToPaletteCode is', paletteCode);
 			const exportedCode = convertURLToPaletteCode(paletteCode);
 			copyContent(exportedCode);
 			setVisible(false);
