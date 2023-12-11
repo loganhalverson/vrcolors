@@ -6,7 +6,7 @@ import { HoverProvider } from '../context/HoverContext';
 
 import { ExportPanelContainer } from '../components/ExportPanelContainer';
 import { ToastContainer } from 'react-toastify';
-import { ThumbnailBuilder } from '../components/thumbnail/ThumbnailBuilder';
+// import { ThumbnailBuilder } from '../components/thumbnail/ThumbnailBuilder';
 import { URLThemeParser } from '../utils/URLThemeParser';
 import { DynamicBackground } from '../components/DynamicBackground';
 import { Navbar } from '../components/Navbar';
@@ -22,7 +22,7 @@ export const MenuColoringPage = () => {
 				<DynamicBackground />
 				<Navbar colorFunctionality />
 				<Menu />
-				<ThumbnailBuilder />
+				{/* <ThumbnailBuilder /> */}
 			</HoverProvider>
 		</ThemeProvider>
 	);
