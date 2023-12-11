@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import animationPlaceholder from '../static/animationPlaceholder.png';
 import '../styles/waves.css';
 
 export const LandingPage = () => {
@@ -67,7 +68,16 @@ export const LandingPage = () => {
 				</div>
 
 				<div className="col-span-4 col-start-6 flex max-h-screen animate-bogo-idle items-center justify-center">
-					<video width="600" height="100%" autoPlay loop muted playsInline className="z-10 scale-125">
+					<video
+						width="600"
+						height="100%"
+						autoPlay
+						loop
+						muted
+						playsInline
+						className="z-10 scale-125"
+						poster={animationPlaceholder}
+					>
 						<source
 							src="https://www.dl.dropboxusercontent.com/scl/fi/vtn4hd338l0an62ogx0sd/croppedOutputTransparent.webm?rlkey=q18s8cvfey193fp94s9eexjpe&dl=0"
 							type="video/webm"
@@ -106,6 +116,7 @@ export const LandingPage = () => {
 								muted
 								playsInline
 								className="z-10 my-4 scale-90"
+								poster={animationPlaceholder}
 							>
 								<source
 									src="https://www.dl.dropboxusercontent.com/scl/fi/vtn4hd338l0an62ogx0sd/croppedOutputTransparent.webm?rlkey=q18s8cvfey193fp94s9eexjpe&dl=0"

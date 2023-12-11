@@ -1,9 +1,9 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { ImportButton, ExportButton } from './Buttons';
+import React, { useState, useMemo } from 'react';
+import { ImportButton, ExportButton } from './ImportExportButtons';
 import { ColorPicker } from './ColorPicker';
 import { Link, useLocation } from 'react-router-dom';
 
-export const Navbar = ({ colorFunctionality, offset = 0 }) => {
+export const Navbar = ({ colorFunctionality }) => {
 	// If the overlay directing users attention to the color pickers on first visit is visible.
 	const [onboarding, setOnboarding] = useState(false);
 
@@ -13,17 +13,17 @@ export const Navbar = ({ colorFunctionality, offset = 0 }) => {
 	// Current page. ex: about, color, how-to
 	let currentPage = useLocation().pathname.split('/')[1];
 
-	const clearOnboarding = () => {
+	const clearOnboarding = async () => {
 		localStorage.setItem('isFirstVisit', false);
 		setOnboarding(false);
 	};
 
 	// Check if it is user's first visit.
-	useMemo(() => {
+	useMemo(async () => {
 		if (localStorage.getItem('isFirstVisit') === null) {
 			setOnboarding(true);
 		}
-	}, [onboarding]);
+	}, []);
 
 	return (
 		<nav className="z-10 border-gray-200 bg-white dark:bg-gray-900">

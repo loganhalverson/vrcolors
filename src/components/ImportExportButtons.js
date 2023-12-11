@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { convertPaletteCodeToTheme } from '../utils/ImportExport';
+import { useNavigate } from 'react-router-dom';
+import { convertPaletteCodeToTheme, convertPaletteCodeToURL } from '../utils/ImportExport';
 import { ThemeContext } from '../context/ThemeContext';
 import { generateShades } from '../utils/Color';
 import { toast } from 'react-toastify';
@@ -13,6 +14,7 @@ import emitter from '../context/EventBus';
 // Create a button that lets a user import a palette code.
 export const ImportButton = () => {
 	const { setTheme, updateTheme } = useContext(ThemeContext);
+	const navigate = useNavigate();
 
 	const toastStyleError = {
 		position: 'top-center',
@@ -34,6 +36,9 @@ export const ImportButton = () => {
 				const newTheme = convertPaletteCodeToTheme(paletteCode);
 				updateTheme(newTheme);
 				generateShades('background', setTheme);
+
+				// Update URL.
+				navigate(`../color/${convertPaletteCodeToURL(paletteCode)}`, { replace: true });
 			} catch (error) {
 				switch (error.message) {
 					case 'InvalidPalette':

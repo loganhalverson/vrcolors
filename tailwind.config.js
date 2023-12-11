@@ -8,15 +8,15 @@ module.exports = {
 				'4xl': '1980px',
 			},
 			animation: {
-				'bogo-idle': 'idle alternate-reverse 4s infinite',
+				'bogo-idle': 'idle alternate-reverse 3s cubic-bezier(.71,0,.42,1.01) infinite',
 			},
 			keyframes: {
 				idle: {
-					from: { transform: 'translateY(0px)' },
-					to: { transform: 'translateY(8px)' },
+					from: { transform: 'translateY(-4px)' },
+					to: { transform: 'translateY(6px)' },
 				},
 			},
 		},
 	},
-	plugins: ['prettier-plugin-tailwindcss', require('tailwindcss-inner-border')],
+	plugins: ['prettier-plugin-tailwindcss'],
 };
