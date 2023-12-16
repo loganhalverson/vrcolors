@@ -1,35 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import emitter from '../context/EventBus';
+import emitter from '../../context/EventBus';
 import { toast } from 'react-toastify';
-import { convertURLToPaletteCode } from '../utils/ImportExport';
+import toastStyles from '../../static/ToastStyles';
+import { convertURLToPaletteCode } from '../../utils/ImportExport';
 import { useParams } from 'react-router-dom';
 
 export const ExportPanelContainer = () => {
 	const [visible, setVisible] = useState(false);
 	const { paletteCode } = useParams();
-
-	const toastStyles = {
-		success: {
-			position: 'top-center',
-			autoClose: 2000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: false,
-			draggable: false,
-			progress: undefined,
-			theme: 'dark',
-		},
-		error: {
-			position: 'top-center',
-			autoClose: 3000,
-			hideProgressBar: true,
-			closeOnClick: true,
-			pauseOnHover: false,
-			draggable: false,
-			progress: undefined,
-			theme: 'dark',
-		},
-	};
 
 	// Writes the parameter input to the user's clipboard.
 	const copyContent = async (input) => {

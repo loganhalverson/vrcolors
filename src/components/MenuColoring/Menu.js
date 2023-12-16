@@ -1,17 +1,17 @@
 import React, { useContext, useEffect } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
-import { HoverContext } from '../context/HoverContext';
+import { ThemeContext } from '../../context/ThemeContext';
+import { HoverContext } from '../../context/HoverContext';
 import { BottomTab } from './menu-components/BottomTab';
 import { FeatureItem } from './menu-components/FeatureItem';
 import { ShieldItem } from './menu-components/ShieldItem';
-import { generateShades } from '../utils/Color';
+import { generateShades } from '../../utils/Color';
 
 // FeatureItem Icons
-import { Voice, Avatar, IconsAndEmojis, Audio, LightsAndParticles, Shaders, Animations } from './Icons';
+import { Voice, Avatar, IconsAndEmojis, Audio, LightsAndParticles, Shaders, Animations } from '../../static/Icons';
 // BottomTab Icons
-import { Rocket, Bell, Planet, Group, Network, Cog, Search, Plus, Question, VBucksLol } from './Icons';
+import { Rocket, Bell, Planet, Group, Network, Cog, Search, Plus, Question, VBucksLol } from '../../static/Icons';
 // ShieldItem Icons
-import { MaximumShield, DefaultShield, NoneShield, CustomShield } from './Icons';
+import { MaximumShield, DefaultShield, NoneShield, CustomShield } from '../../static/Icons';
 
 export const Menu = () => {
 	const { theme, setTheme } = useContext(ThemeContext);
@@ -20,7 +20,7 @@ export const Menu = () => {
 	// On background change, generate shades.
 	useEffect(() => {
 		generateShades('background', setTheme);
-	}, [theme.background]);
+	}, [theme.background, setTheme]);
 
 	return (
 		<div className="mx-auto mt-8 flex w-fit flex-nowrap items-center justify-center 3xl:mt-0 3xl:scale-95 4xl:mt-16 4xl:scale-105">
@@ -120,7 +120,7 @@ export const Menu = () => {
 
 								{/* Features */}
 								<ul
-									className={`mb-4 flex h-full flex-row flex-wrap items-start justify-center gap-x-6 rounded-b-lg px-24 font-semibold `}
+									className={`mb-4 flex h-full flex-row flex-nowrap items-start justify-center gap-x-6 rounded-b-lg px-24 font-semibold `}
 									style={{ backgroundColor: theme.background700 }}
 								>
 									<FeatureItem

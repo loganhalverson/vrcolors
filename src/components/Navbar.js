@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { ImportButton, ExportButton } from './ImportExportButtons';
-import { ColorPicker } from './ColorPicker';
+import { ImportButton, ExportButton } from './MenuColoring/ImportExportButtons';
+import { ColorPicker } from './MenuColoring/ColorPicker';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Navbar = ({ colorFunctionality }) => {

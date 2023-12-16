@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { HoverContext } from '../../context/HoverContext';
+import { HoverContext } from '../../../context/HoverContext';
 import PropTypes from 'prop-types';
 
 export const BottomTab = ({ theme, icon, viewbox, selected = false }) => {
-	const { hovered, setHovered, hoverState } = useContext(HoverContext);
+	const { hovered, hoverState } = useContext(HoverContext);
 
 	return (
 		<li

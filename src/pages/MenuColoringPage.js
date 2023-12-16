@@ -4,13 +4,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from '../context/ThemeContext';
 import { HoverProvider } from '../context/HoverContext';
 
-import { ExportPanelContainer } from '../components/ExportPanelContainer';
+import { ExportPanelContainer } from '../components/MenuColoring/ExportPanelContainer';
 import { ToastContainer } from 'react-toastify';
-// import { ThumbnailBuilder } from '../components/thumbnail/ThumbnailBuilder';
-import { URLThemeParser } from '../utils/URLThemeParser';
-import { DynamicBackground } from '../components/DynamicBackground';
+import { URLThemeParser } from '../components/MenuColoring/URLThemeParser';
+import { DynamicBackground } from '../components/MenuColoring/DynamicBackground';
 import { Navbar } from '../components/Navbar';
-import { Menu } from '../components/Menu';
+import { Menu } from '../components/MenuColoring/Menu';
 
 export const MenuColoringPage = () => {
 	return (
@@ -22,7 +21,6 @@ export const MenuColoringPage = () => {
 				<DynamicBackground />
 				<Navbar colorFunctionality />
 				<Menu />
-				{/* <ThumbnailBuilder /> */}
 			</HoverProvider>
 		</ThemeProvider>
 	);

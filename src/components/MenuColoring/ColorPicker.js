@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { SketchPicker } from 'react-color';
 import OutsideAlerter from './OutsideAlerter';
-import { ThemeContext } from '../context/ThemeContext';
-import emitter from '../context/EventBus';
+import { ThemeContext } from '../../context/ThemeContext';
+import emitter from '../../context/EventBus';
 import { useParams, useNavigate } from 'react-router-dom';
 
 export const ColorPicker = ({ option }) => {

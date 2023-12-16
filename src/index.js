@@ -6,6 +6,7 @@ import { MenuColoringPage } from './pages/MenuColoringPage';
 import { AboutPage } from './pages/AboutPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { HowToPage } from './pages/HowToPage';
+import { DebugPage } from './pages/DebugPage';
 import './styles/index.css';
 
 const router = createBrowserRouter([
@@ -22,7 +23,6 @@ const router = createBrowserRouter([
 		},
 		errorElement: <NotFoundPage />,
 	},
-
 	{
 		path: '/about',
 		element: <AboutPage />,
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
 	{
 		path: '/how-to',
 		element: <HowToPage />,
+	},
+	{
+		path: '/debug',
+		element: <DebugPage />,
 	},
 ]);
 

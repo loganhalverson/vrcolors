@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
-import { ContactList } from '../components/ContactList';
+import { ContactList } from '../components/About/ContactList';
 
 export const AboutPage = () => {
 	return (

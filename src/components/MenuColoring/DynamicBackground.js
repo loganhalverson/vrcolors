@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { shadeHexColor } from '../utils/Color';
-import { ThemeContext } from '../context/ThemeContext';
+import { shadeHexColor } from '../../utils/Color';
+import { ThemeContext } from '../../context/ThemeContext';
 
 export const DynamicBackground = () => {
 	const { theme } = useContext(ThemeContext);

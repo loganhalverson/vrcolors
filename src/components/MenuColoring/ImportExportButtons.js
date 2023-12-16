@@ -1,31 +1,18 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { convertPaletteCodeToTheme, convertPaletteCodeToURL } from '../utils/ImportExport';
-import { ThemeContext } from '../context/ThemeContext';
-import { generateShades } from '../utils/Color';
+import { convertPaletteCodeToTheme, convertPaletteCodeToURL } from '../../utils/ImportExport';
+import { ThemeContext } from '../../context/ThemeContext';
+import { generateShades } from '../../utils/Color';
 import { toast } from 'react-toastify';
-import emitter from '../context/EventBus';
+import toastStyles from '../../static/ToastStyles';
+import emitter from '../../context/EventBus';
 
 /*
 	Implicit access to ThemeContext is assumed.
-	Consider refactoring.
 */
-
-// Create a button that lets a user import a palette code.
 export const ImportButton = () => {
 	const { setTheme, updateTheme } = useContext(ThemeContext);
 	const navigate = useNavigate();
-
-	const toastStyleError = {
-		position: 'top-center',
-		autoClose: 4000,
-		hideProgressBar: true,
-		closeOnClick: true,
-		pauseOnHover: false,
-		draggable: false,
-		progress: undefined,
-		theme: 'dark',
-	};
 
 	const handleClick = () => {
 		let paletteCode = window.prompt('Enter a palette code.', '#6be4f9,#2aabc1,#0d3537...');
@@ -44,12 +31,12 @@ export const ImportButton = () => {
 					case 'InvalidPalette':
 						toast.error(
 							`${error.name}: Invalid palette code provided. A valid code will look like '#F4EBD0,#B68D40...'`,
-							toastStyleError
+							toastStyles.error
 						);
 						console.error(error.message);
 						break;
 					default:
-						toast.error(`${error.name}: An unexpected error has occured.`, toastStyleError);
+						toast.error(`${error.name}: An unexpected error has occured.`, toastStyles.error);
 						console.error(error.message);
 						break;
 				}
@@ -67,7 +54,6 @@ export const ImportButton = () => {
 	);
 };
 
-// Create a button that lets a user export the current colors to a palette code.
 export const ExportButton = () => {
 	return (
 		<div>

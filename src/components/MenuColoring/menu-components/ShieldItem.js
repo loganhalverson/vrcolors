@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import { HoverContext } from '../../context/HoverContext';
-import { DefaultShield, CustomShield } from '../Icons';
+import { HoverContext } from '../../../context/HoverContext';
 
 export const ShieldItem = ({ theme, text, icon, viewbox, selected = false }) => {
-	const { hovered, setHovered, hoverState } = useContext(HoverContext);
+	const { hovered, hoverState } = useContext(HoverContext);
 
 	// const icon = selected ? CustomShield.path : DefaultShield.path;
 	// const viewbox = selected ? CustomShield.viewbox : DefaultShield.viewbox;
