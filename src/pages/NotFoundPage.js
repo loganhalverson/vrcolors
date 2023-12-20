@@ -1,5 +1,3 @@
-import { useRouteError } from 'react-router-dom';
-
 export const NotFoundPage = () => {
 	return (
 		<div className="flex min-h-screen flex-col items-center justify-center gap-y-4 bg-gray-900 text-white">
