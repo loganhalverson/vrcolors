@@ -8,7 +8,7 @@ export const HowToPage = () => {
 			<div className="fixed z-[-1] min-h-screen w-full bg-gradient-to-b from-blue-950 to-gray-950 saturate-[80%] filter" />
 			<Navbar />
 
-			<h2 className="my-16 block py-4 text-center text-7xl font-bold  tracking-wider  text-gray-50 ">
+			<h2 className="mx-6 my-16 block py-4 text-center text-5xl font-bold tracking-wider text-gray-50  md:mx-auto  md:text-7xl ">
 				I've got this code; now what?
 			</h2>
 
@@ -64,9 +64,3 @@ export const HowToPage = () => {
 		</>
 	);
 };
-
-/*
-<p className="absolute flex items-center justify-center top-8 left-8 text-xl font-mono text-blue-950 font-bold ring bg-blue-50 rounded-full text-center h-8 w-8">
-	1
-</p>
-*/

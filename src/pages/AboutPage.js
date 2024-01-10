@@ -12,15 +12,15 @@ export const AboutPage = () => {
 			<Navbar />
 
 			{/* Site Description */}
-			<div className="min-w-screen-xl mx-auto max-w-screen-2xl p-2">
-				<div className="mx-6 flex flex-col gap-x-12 md:mx-0 md:mt-16 md:flex-row">
+			<div className="min-w-screen-xl mx-auto h-auto max-w-screen-2xl p-4">
+				<div className="block items-center justify-center gap-x-12 md:flex md:flex-row">
 					<img
 						src="https://i.imgur.com/n2IlJ5s.png"
-						className="max-w-4xl flex-[0.2] rounded-md object-scale-down object-top drop-shadow-md"
-						alt=""
+						className="mx-auto flex-[0.2] rounded-md object-scale-down object-top drop-shadow-md md:max-w-4xl"
+						alt="VRChat Menu Picture"
 					/>
 					<div className="text-center text-sm leading-relaxed tracking-wide text-neutral-100 md:text-left md:text-xl ">
-						<h2 className="my-4 text-center text-4xl font-bold tracking-wider md:my-0 md:text-left md:text-5xl">
+						<h2 className="my-8 text-center text-4xl font-bold tracking-wider md:my-0 md:text-left md:text-5xl">
 							VRColors
 						</h2>
 
@@ -52,30 +52,28 @@ export const AboutPage = () => {
 
 			{/* Personal Section */}
 			<div className="mx-6 max-w-screen-xl p-2 font-sans text-white md:mx-auto">
-				<div className="flex flex-col gap-x-12 md:flex-row">
-					<div className="flex flex-[0.8] flex-col gap-y-6 text-center align-middle text-sm leading-relaxed text-neutral-100 md:text-left  md:text-xl">
-						<h2 className="text-3xl font-semibold tracking-wider md:text-4xl">What's your deal?</h2>
+				<div className="gap-x-12 md:flex md:flex-row">
+					<div className="flex flex-[0.8] flex-col gap-y-8 text-center align-middle text-sm leading-relaxed text-neutral-100 md:text-xl">
+						<h2 className="text-center text-4xl font-bold tracking-wider md:my-0 md:text-5xl">
+							What's your deal?
+						</h2>
 						<p>
 							I've been on VRChat for about four years on and off. It's a silly place with silly people,
 							but the most important friendships I've made in my life have come from it.
 						</p>
-
 						<p>
-							You can find all my socials below. Ask me about the development process of the website! It
-							was a ton of fun to make.
+							You can find all my socials below. Ask me about the development process! It was a ton of fun
+							to make.
 						</p>
-
 						<ContactList />
-
 						<p>
-							As is tradition with VRC creation, I gotta throw in some of my favorite pictures I've taken
-							over the years. Find them below.
+							As is tradition, I gotta throw in some of my favorite pictures I've taken over the years.
+							Find them below.
 						</p>
 					</div>
-
 					<img
 						src="https://i.imgur.com/j6edbOg.jpeg"
-						className="max-w-2xl flex-[0.2] rounded-lg object-contain object-top drop-shadow-md"
+						className="mx-auto hidden flex-[0.2] rounded-lg object-contain object-top drop-shadow-md md:block md:max-w-2xl"
 						alt=""
 					/>
 				</div>

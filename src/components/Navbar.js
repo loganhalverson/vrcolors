@@ -2,10 +2,12 @@ import React, { useState, useMemo } from 'react';
 import { ImportButton, ExportButton } from './MenuColoring/ImportExportButtons';
 import { ColorPicker } from './MenuColoring/ColorPicker';
 import { Link, useLocation } from 'react-router-dom';
+import { isMobile } from 'react-device-detect';
 
 export const Navbar = ({ colorFunctionality }) => {
 	// If the overlay directing users attention to the color pickers on first visit is visible.
 	const [onboarding, setOnboarding] = useState(false);
+	const [disclaimer, setDisclaimer] = useState(false);
 
 	// The theme's keys used in creating the ColorPicker objects.
 	const keys = ['Highlight', 'Icons', 'Buttons', 'Background', 'Text', 'Subtext'];
@@ -18,15 +20,23 @@ export const Navbar = ({ colorFunctionality }) => {
 		setOnboarding(false);
 	};
 
+	const clearDisclaimer = async () => {
+		localStorage.setItem('isFirstMobileVisit', false);
+		setDisclaimer(false);
+	};
+
 	// Check if it is user's first visit.
 	useMemo(async () => {
 		if (localStorage.getItem('isFirstVisit') === null) {
 			setOnboarding(true);
 		}
+		if (isMobile && localStorage.getItem('isFirstMobileVisit') === null) {
+			setDisclaimer(true);
+		}
 	}, []);
 
 	return (
-		<nav className="z-10 border-gray-200 bg-white dark:bg-gray-900">
+		<nav className="z-10 border-gray-200 bg-gray-900">
 			<div className={`mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between p-3`}>
 				{/* Brand */}
 				<Link to="../" className="flex items-center">
@@ -43,7 +53,7 @@ export const Navbar = ({ colorFunctionality }) => {
 
 				{/* Links */}
 				<div className="block w-auto">
-					<ul className="flex flex-row items-center gap-x-8 font-medium">
+					<ul className="flex flex-row items-center gap-x-4 font-medium">
 						<Link
 							to="/color/6BE4F9-2AABC1-0D3537-1B222C-BBBBBB-008489"
 							key="home"
@@ -93,7 +103,7 @@ export const Navbar = ({ colorFunctionality }) => {
 							</div>
 
 							{/* If it's the user's first visit, display the onboarding help. */}
-							{onboarding && (
+							{onboarding && !isMobile && (
 								<>
 									{/* Hide onBoarding if the user clicks anywhere. */}
 									<div
@@ -116,6 +126,35 @@ export const Navbar = ({ colorFunctionality }) => {
 										</span>{' '}
 										of the menu below.
 									</span>
+								</>
+							)}
+
+							{/* Display disclaimer about mobile support. */}
+							{disclaimer && (
+								<>
+									{/* Hide onBoarding if the user clicks anywhere.
+									<div
+										onClick={() => clearDisclaimer()}
+										className="fixed z-[11] min-h-screen min-w-full"
+									/> */}
+									<div className="fixed left-0 top-0 z-10 min-h-screen min-w-full bg-neutral-950 text-white opacity-90">
+										<div className="flex h-max min-h-screen w-full flex-col items-center justify-center gap-y-8 p-6 text-center">
+											<p className="text-4xl font-semibold">
+												VRColors is{' '}
+												<span className="text-red-500">not built for mobile devices.</span>
+											</p>
+											<p>
+												For the best experience, access the site on a desktop. You can still use
+												the site and scrape by on mobile, but it won't be pretty.
+											</p>
+											<button
+												className="rounded-md bg-blue-600 px-4 py-2 text-xl opacity-100"
+												onClick={() => clearDisclaimer()}
+											>
+												I understand.
+											</button>
+										</div>
+									</div>
 								</>
 							)}
 						</div>
