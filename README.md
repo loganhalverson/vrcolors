@@ -4,12 +4,11 @@
 <br />
 <div align="center">
 
-  <h1 align="center">VRColors</h1>
+  <h1 align="center"><a href="https://vrcolors.app">VRColors</a></h1>
 
   <p align="center">
     A theme creation and sharing website for VRChat.
     <br />
-    <a href="https://warm-empanada-0fb072.netlify.app/">Live Demo</a>
   </p>
 </div>
 
@@ -47,11 +46,11 @@
   <img src="public/vrcolorsDemo.gif" width="80%"/>
 </div>
 
-This website seeks to emulate the custom UI themes available to VRChat Plus users. It also serves as a way of sharing these themes, instead of prodding someone for a nondescript string of hex values.
+VRColors seeks to emulate the in-game menu of VRChat and the custom color theme feature available to VRC+ users. It exists as an alternative to trying out color combinations outside of the game, because it can be cumbersome copy pasting hex codes while in VR. 
+
+Another goal is to aid in sharing themes with other users. Instead of sharing a nondescript string of hex values, VRColors can be used to preview and edit them easily.
 
 The safety menu was chosen because it displays all custom colors in clear sections. To recreate every section of the in-game menu is, unfortunately, far beyond my pay grade in both skill and time.
-
-The website was built with React and TailwindCSS. Check out the project repository on my GitHub.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -67,8 +66,9 @@ The website was built with React and TailwindCSS. Check out the project reposito
 
 ## Getting Started
 
-Use the <a href="https://warm-empanada-0fb072.netlify.app/">Live Demo</a> website to use VRColors in your browser.
-To get a local copy up and running follow these steps.
+Visit the hosted website at <a href="https://vrcolors.app/">vrcolors.app</a> to try out the app in your browser.
+<br>
+To get a local copy up and running, follow the steps listed below.
 
 ### Prerequisites
 
@@ -79,17 +79,17 @@ npm install npm@latest -g
 ### Installation
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/loganhalverson/vrcolors
-   ```
+    ```sh
+    git clone https://github.com/loganhalverson/vrcolors
+    ```
 2. Install NPM packages
-   ```sh
-   npm install
-   ```
+    ```sh
+    npm install
+    ```
 3. Run the app in development mode
-   ```js
-   npm start
-   ```
+    ```js
+    npm start
+    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -97,9 +97,9 @@ npm install npm@latest -g
 
 ## Roadmap
 
-- [x] Initial Release
-- [ ] Rich Discord Embedding
-- [ ] Public Gallery & Theme Sharing
+-   [x] Initial Release
+-   [ ] Rich Discord Embedding
+-   [ ] Public Gallery & Theme Sharing
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -108,6 +108,9 @@ npm install npm@latest -g
 ## Contributing
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+
+I'm no React expert, so there is undoubtedly better ways to approach the various problems I faced in this project. Please do feel free to improve upon it.
+
 Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -126,7 +129,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <ul>
 <li>
-Discord: @bogo
+Discord: @biscuitbasket.
 </li>
 
 <li>
@@ -148,10 +151,10 @@ VRChat:
 
 Listed below are helpful resources used during development of this website.
 
-- [VRChat](https://vrchat.com/home)
-- [Iconify](https://iconify.design/)
-- [Best-README-Template](https://github.com/othneildrew/Best-README-Template/tree/master)
-- [Img Shields](https://shields.io)
+-   [VRChat](https://vrchat.com/home)
+-   [Iconify](https://iconify.design/)
+-   [Best-README-Template](https://github.com/othneildrew/Best-README-Template/tree/master)
+-   [Img Shields](https://shields.io)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
